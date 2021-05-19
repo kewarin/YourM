@@ -1,0 +1,30 @@
+<%- include('partials/header.ejs') %>
+<form action='/signup' method='POST'>
+<main class="form-signin" style="border-radius: 50px; padding: 50px;">
+    <center>
+    <form class="contanier">
+      <a class="navbar-brand" href="/" style=" background: linear-gradient( 45deg, #ffa69e, #b8f2e6);
+      background-size: 150%;
+      font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      font-size: 100px;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;"><strong>&nbsp;YourM</strong></a>
+      <h3 class="h3 mb-3 fw-normal" style=" color:#45484e; ">Create Account</h3>
+  
+      <div class="input-group" style="width: 450px;">
+        
+        <input type="text" aria-label="Username" placeholder="username" name="username" class="form-control">
+      </div>
+      <div class="input-group" style="width: 450px;">
+        
+        <input type="password" aria-label="Password" placeholder="password" name="password" class="form-control">
+      </div>
+
+      <hr style="width: 550px;">
+      <button class="btn btn-primary" type="submit" style="background-color: #45484e;">Create</button>
+      
+    </form>
+</center>
+  </main>
+</form>
+<%- include('partials/footer.ejs') %>

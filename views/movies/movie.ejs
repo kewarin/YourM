@@ -1,0 +1,67 @@
+<%- include('../partials/header.ejs') %>
+
+  <h1 class="display-5 fw-bold" style="text-align: center; background-color: #45484e; color: rgb(255, 255, 255); padding: 20px;">Now Showing</h1>
+<div class="album py-5">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <% Movies.forEach(function(movie){ %>
+        <div class="col">
+          <div class="card shadow-sm">
+            <img src="<%= movie.image %>" class="card-img-top" height="600px">
+          <div class="card-body">
+            <h5 class="card-title" style="text-align: center;"><%= movie.name %></h5>
+            <center><a href="/movie/<%= movie._id %>" class="btn btn-sm btn-outline-secondary">booking</a></center>
+          </div>
+        </div>
+        </div>
+    <% }); %>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <h1 class="display-5 fw-bold" style="text-align: center; background-color: #45484e; color: rgb(255, 255, 255); padding: 20px;">Coming Soon</h1>
+  <div class="album py-5">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="col">
+          <div class="card shadow-sm">
+            <img src="https://www.joblo.com/newsimages1/venom-poster-6-913.jpg" class="card-img-top" height="600px">
+          
+          <div class="card-body">
+            <h5 class="card-title" style="text-align: center; "><strong>Venom</strong></h5>
+            <h5 class="card-title" style="text-align: center; ">25 June 2020</h5>
+          </div>
+        </div>
+      </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <img src="https://cdn.shopify.com/s/files/1/0969/9128/products/The_Shape_Of_Water_-_Tallenge_Hollywood_Movie_Poster_Collection_28c21638-1466-4ae7-bde1-42d1cf2812cb.jpg?v=1570086168" class="card-img-top" height="600px">
+          
+          <div class="card-body">
+            <h5 class="card-title" style="text-align: center; "><strong>The shape of water</strong></h5>
+            <h5 class="card-title" style="text-align: center; ">25 June 2020</h5>
+          </div>
+        </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <img src="https://www.joblo.com/assets/images/joblo/news/2020/10/archenemyposter.jpg" class="card-img-top" height="600px">
+          
+          <div class="card-body">
+            <h5 class="card-title " style="text-align: center; "><strong>Archenemy</strong></h5>
+            <h5 class="card-title" style="text-align: center; ">25 June 2020</h5>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+
+    
+
+<%- include('../partials/footer.ejs') %>

@@ -1,0 +1,45 @@
+<%- include('../partials/header.ejs') %>
+<div class='container'>
+<form action="/movie/<% Movies._id %>/comment " method="POST">
+<center>
+<div class="card mb-3" style="max-width: 1540px; max-height: 1000px; padding: 30px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="<%= Movies.image %>" width="350px" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body" style="text-align:left">
+          <h5 class="card-title"><%= Movies.name%> </h5>
+          <p class="card-text"><%= Movies.desc %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <label  class="form-label">Comment</label>
+  <input type="text" class="form-control" name='comment[text]' placeholder='Comment'>
+</div>
+<button type="submit" class="btn btn-primary">Submit</button>
+<a href='/movie'>Go back</a>
+</form>
+</div>
+</center>
+<!-- <p>Submitted by <%= Movies.author.username %></p>
+<% if(currentUser && Movies.author.id == (currentUser._id)){ %>
+    <a href='/movie/<%= Movies._id %>/edit' class="btn btn-warning">Edit</a>
+    <form id = 'delete-form' action = '/movie/<%= Movies._id %>?_method=DELETE' method='POST'>
+        <button type='submit' class="btn btn-danger">Delete</button>
+    </form>
+ <% } %>   
+ <p><a class="btn btn-primary" href = '/movie/<%= Movies._id %>/comment/new'>Add new comment</a></p>   
+<% Movies.comment.forEach(function(comment){ %>
+    <p>
+        <strong><%= comment.author.username %></strong> - <%= comment.text %>
+    </p>   
+    <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+        <a href='/movie/<%= Movies._id %>/comment/<%= comment._id %>/edit' class="btn btn-warning">Edit</a>
+        <form id = 'delete-form' action = '/movie/<%= Movies._id %>/comment/<%= comment._id %>?_method=DELETE' method='POST'>
+            <button type='submit' class="btn btn-danger">Delete</button>
+        </form>
+     <% } %>   
+<% }); %> -->
+<%- include('../partials/footer.ejs') %>
