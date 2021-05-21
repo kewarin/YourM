@@ -1,13 +1,23 @@
 <%- include('../partials/header.ejs') %>
 
-  <h1 class="display-5 fw-bold" style="text-align: center; background-color: #45484e; color: rgb(255, 255, 255); padding: 20px;">Now Showing</h1>
+<h1 class="display-5 fw-bold" style="text-align: center; background-color: #45484e; color: rgb(255, 255, 255); padding: 20px;">Now Showing</h1>
 <div class="album py-5">
     <div class="container">
+      <div class="btn-group">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+          Dropdown
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <li><a class="dropdown-item" href="#">Menu item</a></li>
+          <li><a class="dropdown-item" href="#">Menu item</a></li>
+          <li><a class="dropdown-item" href="#">Menu item</a></li>
+        </ul>
+      </div>
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <% Movies.forEach(function(movie){ %>
         <div class="col">
           <div class="card shadow-sm">
-            <img src="<%= movie.image %>" class="card-img-top" height="600px">
+            <img href="/movie/<%= movie._id %>" src="<%= movie.image %>" class="card-img-top" height="600px">
           <div class="card-body">
             <h5 class="card-title" style="text-align: center;"><%= movie.name %></h5>
             <center><a href="/movie/<%= movie._id %>" class="btn btn-sm btn-outline-secondary">booking</a></center>
@@ -18,10 +28,6 @@
       </div>
     </div>
   </div>
-
-
-
-
 
   <h1 class="display-5 fw-bold" style="text-align: center; background-color: #45484e; color: rgb(255, 255, 255); padding: 20px;">Coming Soon</h1>
   <div class="album py-5">

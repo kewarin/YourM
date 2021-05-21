@@ -1,8 +1,8 @@
-var express = require('express'),
-    router  = express.Router({mergeParams: true}),
-    middleware = require('../middleware'),
-    movies = require('../models/movie'),
-    comment    = require('../models/comment');
+var express     = require('express'),
+    router      = express.Router({mergeParams: true}),
+    middleware  = require('../middleware'),
+    movies      = require('../models/movie'),
+    comment     = require('../models/comment');
 
 router.get('/new', middleware.isLoggedIn, function(req, res){
     movies.findById(req.params.id, function(err, foundMovie){
@@ -20,15 +20,16 @@ router.post('/', middleware.isLoggedIn, function(req, res){
             console.log(err);
             res.redirect('/movie');
         } else {
-            comment.create(req.body.comment, function(err, comment){
+            console.log('com');
+            comment.create(req.body.comment, function(err, foundComment){
                 if(err) {
                     console.log(err);
                 } else {
                     comment.author.id = req.user._id;
                     comment.author.username = req.user.username;
                     comment.save();
-                    foundCollection.comments.push(comment);
-                    foundCollection.save();
+                    foundMovie.comment.push(foundComment);
+                    foundMovie.save();
                     res.redirect('/movie/'+ foundMovie._id);
                 }
             });

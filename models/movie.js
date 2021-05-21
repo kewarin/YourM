@@ -8,10 +8,10 @@ var MovieSchema = new mongoose.Schema({
     author: {
         id: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'User'
+            ref: 'user'
         },
         username: String
-},
+    },
     comment: [
         {
             type: mongoose.Schema.Types.ObjectId,

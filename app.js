@@ -7,7 +7,6 @@ const express       = require('express'),
       LocalStrategy = require('passport-local'),
       user          = require('./models/user'),
       movies        = require('./models/movie'),
-      top5          = require('./models/top5'),
       comment       = require('./models/comment');      
 
 var movieRoutes = require('./route/movie');
@@ -55,6 +54,7 @@ function isloggedIn(req, res, next) {
     } 
     res.redirect('/login');
 };
+
 
 app.listen('3000', function(){
     console.log('Yourmove is started.');
