@@ -72,6 +72,21 @@ router.post('/:id', middleware.isLoggedIn, function(req, res){
     });
 });
 
+router.post('/search', function(req,res){
+    var name = req.body.search;
+    res.redirect('/movie/search/' + name);
+});
+
+router.get('/search/:name', function(req,res){
+    Movies.find({name: new RegExp(req.params.name, 'i')}, function(err, foundMovies){
+        if(err){
+            console.log(err);
+        } else {
+            res.render('./movie/movie.ejs', {Movies: foundMovies, sort: req.params.name});
+        }
+    });
+});
+
 function isloggedIn(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
