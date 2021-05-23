@@ -2,7 +2,7 @@ const express       = require('express'),
       router  = express.Router(),
       user    = require('../models/user'),
       movies        = require('../models/movie'),
-      passport=  require('passport');
+      passport  =  require('passport');
 
 router.get('/', function(req, res){
     movies.find({}, function(err, allMovie){

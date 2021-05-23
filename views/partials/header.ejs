@@ -37,8 +37,11 @@
               </li>
             </ul>
                     
-            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" style="width: 250px;" action="/movie/search" method="POST">
-              <input type="text" name="search" class="form-control form-control-dark" placeholder="Search Movies & Cinema ...">
+            <form action='/movie/search' method='POST'>
+              <div class="input-group" style="width: 250px;" >
+                <input type="text" name="search" class="form-control" placeholder="Search Movies...." aria-label="Search">
+                <button class="btn btn-primary" type="submit" style="background-color: #45484e;">Search</button>
+              </div>  
           </form>
             <% if(!currentUser){ %> 
               <a class="nav-link" href="/login" style="color: rgb(255, 255, 255);">

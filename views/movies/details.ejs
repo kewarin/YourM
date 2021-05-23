@@ -1,45 +1,53 @@
 <%- include('../partials/header.ejs') %>
-<div class='container'>
-<form action="/movie/<% Movies._id %> " method="POST">
-<center>
-<div class="card mb-3" style="max-width: 2000px; max-height: 1000px; padding: 30px;">
-  <div class="row g-0">
-      <div class="col-md-4">
-        <img src="<%= Movies.image %>" width="350px" alt="...">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body" style="text-align:left">
-          <h5 class="card-title"><%= Movies.name %> </h5>
-          <p class="card-text"><%= Movies.desc %></p>
-          <iframe width="700" height="400" src="<%= Movies.trailer %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <div class='container'>
+    <center>
+      <div class="card mb-3" style="max-width: 2000px; max-height: 1000px; padding: 30px;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="<%= Movies.image %>" width="350px" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body" style="text-align:left">
+              <h5 class="card-title">
+                <%= Movies.name %>
+              </h5>
+              <p class="card-text">
+                <%= Movies.desc %>
+              </p>
+              <iframe width="700" height="400" src="<%= Movies.trailer %>" title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div>
-    <h5><%= Movies.comment %> </h5>
-    <% Movies.comment.forEach(function(comment){ %>
-      <p>
-        <strong><%= comment.author %></strong> - <%= comment.text %>
-    </p> 
-    <% }); %>  
-  </div>
-  <div class="mb-3">
-    <label  class="form-label">Comment</label>
-    <input type="text" class="form-control" name='comment[text]' placeholder='Comment'>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-</div>
+    </center>
 
-</center>
-<!-- div class='container'>
- 
-    <div class="mb-3">
+    <form action="/movie/<%= Movies._id %>/comment " method="POST">
+      <!-- <div class="mb-3">
         <label class="form-label">Author</label>
         <input type="text" class="form-control" name='comment[author]' placeholder='Your username'>
+      </div> -->
+      <div class="mb-3">
+        <label class="form-label">Comment</label>
+        <input type="text" class="form-control" aria-label="comment" name='comment[text]' placeholder='Comment'>
       </div>
-     
-  </div> -->
+      <button type="submit" class="btn btn-primary" value="comment" style="background-color: #45484e; ">Submit</button>
+    </form>
 
-<%- include('../partials/footer.ejs') %>
+    <div class="container">
+      <% Movies.comment.forEach(function(comment){ %>
+        <div class="card card-cover rounded-5 shadow-lg p-2" style=" padding-top: 10px; height: 120px;">
+          <p>
+            <strong style="color: black;">&nbsp;<%= comment.author %></strong>
+          </p>
+          &emsp; <%= comment.text %>
+        </div>
+        <div class="container-fluid" style="height: 20px;"></div>
+        <% }); %>
+    </div>
+
+
+
+  </div>
+  <%- include('../partials/footer.ejs') %>
