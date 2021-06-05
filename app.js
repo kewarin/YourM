@@ -11,7 +11,9 @@ const express       = require('express'),
 
 var movieRoutes = require('./route/movie');
 var indexRoutes = require('./route/index'),
-    commentRoutes = require('./route/comment');
+    adminRoutes = require('./route/admin'),
+    commentRoutes = require('./route/comment'),
+    userRoutes = require('./route/user');;
 
 
 mongoose.connect('mongodb://localhost/Yourmove');
@@ -41,6 +43,8 @@ app.use(function (req, res, next){
 app.use('/', indexRoutes);
 app.use('/movie', movieRoutes);
 app.use('', indexRoutes);
+app.use('/admin', adminRoutes);
+app.use('/user', userRoutes);
 app.use('/movie/:id/comment', commentRoutes);
 
 app.get('/cinema', function(req, res){

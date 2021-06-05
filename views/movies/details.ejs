@@ -34,19 +34,21 @@
       </div>
       <button type="submit" class="btn btn-primary" value="comment" style="background-color: #45484e; ">Submit</button>
     </form>
-
-    <div class="container">
-      <% Movies.comment.forEach(function(comment){ %>
-        <div class="card card-cover rounded-5 shadow-lg p-2" style=" padding-top: 10px; height: 120px;">
-          <p>
-            <strong style="color: black;">&nbsp;<%= comment.author %></strong>
-          </p>
-          &emsp; <%= comment.text %>
-        </div>
-        <div class="container-fluid" style="height: 20px;"></div>
-        <% }); %>
+<hr>
+<div class="container">
+  <% Movies.comment.forEach(function(comment){ %>
+    <div class="card card-cover rounded-5 shadow-lg p-2" style=" padding-top: 10px; height: 120px;">
+      <p>
+        <strong style="color: black;">&nbsp;<%= comment.author %></strong>
+      </p>
+      &emsp; <%= comment.text %>
     </div>
+    <div class="container-fluid" style="height: 20px;"></div>
+    <% }); %>
+</div>
 
+
+   
 
 
   </div>

@@ -37,6 +37,16 @@ router.get('/sorting-ztoa', function (req, res) {
     }).sort({ name: -1 });
 });
 
+router.get('/genre/:genre', function(req,res){
+    movies.find({genre: new RegExp(req.params.genre, 'i')}, function(err, foundMovies){
+        if(err){
+            console.log(err);
+        } else {
+            res.render('./movies/movie.ejs', {Movies: foundMovies, sort: req.params.genre});
+        }
+    });
+});
+
 router.post('/search', function (req, res) {
     var name = req.body.search;
     res.redirect('/movie/search/' + name);

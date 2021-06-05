@@ -9,7 +9,13 @@ router.get('/', function(req, res){
         if (err) {
             console.log(err);
         } else {
-            res.render('home.ejs',{Movies: allMovie});
+            movies.find().sort({score: -1}).limit(3).exec(function (err, sortMovies) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    res.render('home.ejs',{Movies: allMovie, Sort: sortMovies});
+                }
+            });
         }
     });
     

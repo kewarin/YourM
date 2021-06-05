@@ -63,11 +63,13 @@
         <% Movies.forEach(function(movie){ %>
         <div class="col">
           <div class="card shadow-sm">
-            <img href="/movie/<%= movie._id %>" src="<%= movie.image %>" class="card-img-top" height="600px">
+            <a href="/movie/<%= movie._id %>">
+            <img  src="<%= movie.image %>" class="card-img-top" height="600px">
           <div class="card-body">
             <h5 class="card-title" style="text-align: center;"><%= movie.name %></h5>
             <center><a href="/movie/<%= movie._id %>" class="btn btn-sm btn-outline-secondary">booking</a></center>
           </div>
+          </a>
         </div>
         </div>
     <% }); %>
