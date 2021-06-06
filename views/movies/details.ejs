@@ -9,7 +9,7 @@
           <div class="col-md-8">
             <div class="card-body" style="text-align:left">
               <h5 class="card-title">
-                <%= Movies.name %>
+                <%= Movies.name %><span> &nbsp;:&nbsp; <%= Movies.runtime %> </span>
               </h5>
               <p class="card-text">
                 <%= Movies.desc %>
@@ -46,10 +46,6 @@
     <div class="container-fluid" style="height: 20px;"></div>
     <% }); %>
 </div>
-
-
-   
-
 
   </div>
   <%- include('../partials/footer.ejs') %>

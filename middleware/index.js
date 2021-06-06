@@ -1,44 +1,42 @@
-const movie = require('../models/movie');
+
 var movies = require('../models/movie'),
-    comment    = require('../models/comment');
+    comment    = require('../models/comment'),
+    user = require('../models/user');
 
 var middlewareObj = {};
 
-middlewareObj.checkCollectionOwner = function(req, res, next){
+middlewareObj.checkProfileOwner = function(req, res, next){
     if(req.isAuthenticated()){
-        movie.findById(req.params.id, function(err, foundMovie){
-            if(err){
-                res.redirect('back');
-            } else {
-                if(foundMovie.author.id.equals(req.user._id)) {
-                    next();
-                } else {
-                    res.redirect('back');
-                }
-            }
-        });
+        if( req.user._id.equals(req.params.id) ){
+            return next();
+        }
+        else {
+            
+            res.redirect('/back');
+        }
     } else {
-        res.redirect('back');
+        
+        res.redirect('/login');
     }
-}
+};
 
-middlewareObj.checkCommentOwner = function(req, res, next){
+middlewareObj.checkAdmin = function(req, res, next){
     if(req.isAuthenticated()){
-        comment.findById(req.params.comment_id, function(err, foundComment){
+        User.findById(req.user._id, function(err, currentUser){
             if(err){
+                
                 res.redirect('back');
             } else {
-                if(foundComment.author.id.equals(req.user._id)) {
-                    next();
-                } else {
-                    res.redirect('back');
+                if( currentUser.priority === 'admin' ){
+                    return next();
                 }
             }
         });
     } else {
+        
         res.redirect('back');
     }
-}
+};
 
 
 

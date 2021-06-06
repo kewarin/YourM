@@ -80,6 +80,7 @@
 var express = require('express'),
     router  = express.Router({mergeParams: true}),
     movies = require('../models/movie'),
+    user = require('../models/user'),
     comment    = require('../models/comment');
 
 router.get('/new',isLoggedIn, function(req, res){

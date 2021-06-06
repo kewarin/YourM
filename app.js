@@ -5,13 +5,13 @@ const express       = require('express'),
       seedDB        = require('./seeds'),
       passport      = require('passport'),
       LocalStrategy = require('passport-local'),
-      user          = require('./models/user'),
-      movies        = require('./models/movie'),
-      comment       = require('./models/comment');      
+      
+      user          = require('./models/user');
 
 var movieRoutes = require('./route/movie');
 var indexRoutes = require('./route/index'),
     adminRoutes = require('./route/admin'),
+    cinemasRoutes = require('./route/cinema'),
     commentRoutes = require('./route/comment'),
     userRoutes = require('./route/user');;
 
@@ -45,6 +45,7 @@ app.use('/movie', movieRoutes);
 app.use('', indexRoutes);
 app.use('/admin', adminRoutes);
 app.use('/user', userRoutes);
+app.use('/cinemas', cinemasRoutes);
 app.use('/movie/:id/comment', commentRoutes);
 
 app.get('/cinema', function(req, res){
@@ -60,6 +61,6 @@ function isloggedIn(req, res, next) {
 };
 
 
-app.listen('3000', function(){
+app.listen('1248', function(){
     console.log('Yourmove is started.');
 });

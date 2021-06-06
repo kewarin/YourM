@@ -1,5 +1,8 @@
 var mongoose = require('mongoose');
 var movies = require('./models/movie');
+var Cinemas     = require('./models/cinema.js');
+var Liked       = require('./models/liked.js');
+var User        = require('./models/user.js');
 
 var data = [
     {
@@ -86,6 +89,30 @@ var data = [
 
 ];
 
+var cData = [
+    {
+        name: "ICON CINECONIC",
+        image: "https://iconsiam-aws-s3-prod.s3.ap-southeast-1.amazonaws.com/assets/JVF1EKHFEIRCG_01.jpg",
+        address: "299 Soi Charoen Nakhon 5 Charoen Nakhon Road Khlong Ton Sai, Khlong San Bangkok 10600",
+        seat: [ [0, 0, 0 ,0] , [0, 0, 0, 0] ],
+        time: [11,14,17,20],
+    },
+    {
+        name: "Cineplex Rama II",
+        image: "https://cdn.majorcineplex.com/uploads/content/images/PARAGON%20Cineplex_0203.jpg",
+        address: "128 Moo 6, Rama 2 Central Plaza Rama 2 Rd, Bangkok 10150",
+        seat: [ [0, 0, 0 ,0] , [0, 0, 0, 0] ],
+        time: [10,13,16,19,22],
+    },
+    {
+        name: "Paragon Cineplex",
+        image: "https://9968c6ef49dc043599a5-e151928c3d69a5a4a2d07a8bf3efa90a.ssl.cf2.rackcdn.com/649514-1.jpg",
+        address: "991 Siam Paragon Khwaeng Pathum Wan, Khet Pathum Wan, Krung Thep Maha Nakhon 10330",
+        seat: [ [0, 0, 0 ,0] , [0, 0, 0, 0] ],
+        time: [,13,15,18,21],
+    },
+];
+
 function seedDB(){
     movies.remove({}, function (err) {
         if (err) {
@@ -103,6 +130,35 @@ function seedDB(){
             });
         }
     });
- 
+    Cinemas.remove({}, function(err){
+        if(err){
+            console.log(err);
+        } else {
+            console.log("Remove Cinemas Complete");
+            cData.forEach(function(seed){
+                Cinemas.create(seed, function(err, cinema){
+                    if(err){
+                        console.log(err);
+                    } else {
+                        console.log('Cinemas data added');
+                    }
+                });
+            });
+        }
+    });
+    Liked.remove({}, function(err){
+        if(err){
+            console.log(err);
+        } else {
+            User.updateMany({likes: []}, function(err){
+                if(err){
+                    console.log(err);
+                } else {
+                    console.log("Remove Liked Complete");
+                }
+            });
+        }
+    });
 }
+ 
 module.exports = seedDB;
