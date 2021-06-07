@@ -115,8 +115,8 @@
                       <div class="dropdown">
                         <button class="dropbtn">Admin</button>
                         <div class="dropdown-content" style="max-width: 25px;" >
-                          <a href="/user/<%= user._id %>">Profile</a>
-                          <a href="#">Ticket</a>
+                          <a href="/user/<%= currentUser._id  %>">Profile</a>
+                          <a href="/user/<%= currentUser._id %>/ticket">Ticket</a>
                         </div>
                       </div>
                       <a class="nav-link" href="/logout" style="color: rgb(255, 255, 255);">
@@ -133,7 +133,7 @@
                       <button class="dropbtn"><%= currentUser.username %></button>
                       <div class="dropdown-content" style="max-width: 25px;" >
                         <a href="/user/<%= currentUser._id %>">Profile</a>
-                        <a href="#">Ticket</a>
+                        <a href="/user/<%= currentUser._id %>/ticket">Ticket</a>
                       </div>
                     </div>
                     <a class="nav-link" href="/logout" style="color: rgb(255, 255, 255);">

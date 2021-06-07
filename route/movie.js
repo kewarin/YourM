@@ -37,12 +37,12 @@ router.get('/sorting-ztoa', function (req, res) {
     }).sort({ name: -1 });
 });
 
-router.get('/genre/:genre', function(req,res){
-    movies.find({genre: new RegExp(req.params.genre, 'i')}, function(err, foundMovies){
-        if(err){
+router.get('/genre/:genre', function (req, res) {
+    movies.find({ genre: new RegExp(req.params.genre, 'i') }, function (err, foundMovies) {
+        if (err) {
             console.log(err);
         } else {
-            res.render('./movies/movie.ejs', {Movies: foundMovies, sort: req.params.genre});
+            res.render('./movies/movie.ejs', { Movies: foundMovies, sort: req.params.genre });
         }
     });
 });
@@ -65,7 +65,7 @@ router.get('/search/:name', function (req, res,) {
 
 
 router.get("/:id", function (req, res) {
-    movies.findById(req.params.id).populate().exec(function (err, foundMovie) {
+    movies.findById(req.params.id).populate("comment").exec(function (err, foundMovie) {
         if (err) {
             console.log(err);
         } else {

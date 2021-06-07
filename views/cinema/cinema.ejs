@@ -1,80 +1,89 @@
 <%- include('../partials/header.ejs') %>
-<img src="https://d136usn7jnoe61.cloudfront.net/magazine/articles/423/images/centralembassy.jpg" class="d-block w-100" style="width: 200px; height: 500px;" alt="...">
-<h1 class="display-5 fw-bold" style="text-align: center; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; background-color: #2c2e31; color: rgb(255, 255, 255); padding: 20px;">All Cinemas</h1>
-<style>
-  /* Style The Dropdown Button */
-  .dropbtn {
-    background-color: #2c2e31;
-    color: white;
-    padding: 10px;
-    font-size: 16px;
-    border: 10px;
-    cursor: pointer;
-  }
-  
-  /* The container <div> - needed to position the dropdown content */
-  .dropdown {
-    position: relative;
-    display: inline-block;
-  }
-  
-  /* Dropdown Content (Hidden by Default) */
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-  
-  /* Links inside the dropdown */
-  .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-  }
-  
-  /* Change color of dropdown links on hover */
-  .dropdown-content a:hover {background-color: #f1f1f1}
-  
-  /* Show the dropdown menu on hover */
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-  
-  /* Change the background color of the dropdown button when the dropdown content is shown */
-  .dropdown:hover .dropbtn {
-    background-color: #2c2e31;
-  }
+  <img src="https://d136usn7jnoe61.cloudfront.net/magazine/articles/423/images/centralembassy.jpg" class="d-block w-100"
+    style="width: 200px; height: 500px;" alt="...">
+  <h1 class="display-5 fw-bold"
+    style="text-align: center; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; background-color: #2c2e31; color: rgb(255, 255, 255); padding: 20px;">
+    All Cinemas</h1>
+  <style>
+    /* Style The Dropdown Button */
+    .dropbtn {
+      background-color: #2c2e31;
+      color: white;
+      padding: 10px;
+      font-size: 16px;
+      border: 10px;
+      cursor: pointer;
+    }
+
+    /* The container <div> - needed to position the dropdown content */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    /* Dropdown Content (Hidden by Default) */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+
+    /* Links inside the dropdown */
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    /* Change color of dropdown links on hover */
+    .dropdown-content a:hover {
+      background-color: #f1f1f1
+    }
+
+    /* Show the dropdown menu on hover */
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    /* Change the background color of the dropdown button when the dropdown content is shown */
+    .dropdown:hover .dropbtn {
+      background-color: #2c2e31;
+    }
   </style>
-  
+
   <div class="dropdown" style="padding: 25px;">
-    <button class="dropbtn" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Sorting</button>
+    <button class="dropbtn"
+      style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Sorting</button>
     <div class="dropdown-content">
       <a href="/cinemas/sorting-atoz">A to Z</a>
       <a href="/cinemas/sorting-ztoa">Z to A</a>
     </div>
   </div>
 
-<div class="container-fluid">
+  <div class="container-fluid">
     <div class="col">
       <div style="padding: 10px;" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <% Cinemas.forEach(function(cinema){ %>
-        <div class="col">
-          <div class="card shadow-sm">
-            <a href="/cinemas/<%= cinema._id %>">
-            <img  src="<%=cinema.image %>" class="card-img-top" width="500px" height="300px" style="object-fit: cover;">
-          <div class="card-body" style="color: #2c2e31; text-decoration: none;">
-            <h6 class="card-title" style="text-align: center;"><%= cinema.name %></h6>
+          <div class="col">
+            <div class="card shadow-sm">
+              <a href="/cinemas/<%= cinema._id %>">
+                <img src="<%=cinema.image %>" class="card-img-top" width="500px" height="300px"
+                  style="object-fit: cover;">
+                <div class="card-body" style="color: #2c2e31; text-decoration: none;">
+                  <h6 class="card-title" style="text-align: center;">
+                    <%= cinema.name %>
+                  </h6>
+                </div>
+              </a>
+            </div>
           </div>
-          </a>
-        </div>
-        </div>
-    <% }); %>
+          <% }); %>
       </div>
     </div>
   </div>
 
-<%- include('../partials/footer.ejs') %>
+  <%- include('../partials/footer.ejs') %>

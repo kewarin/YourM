@@ -1,16 +1,16 @@
 var express = require('express'),
-    router  = express.Router(),
+    router = express.Router(),
     middleware = require('../middleware'),
-    cinemas  = require('../models/cinema');
-    movies = require('../models/movie');
-    user    = require('../models/user');
+    cinemas = require('../models/cinema');
+movies = require('../models/movie');
+user = require('../models/user');
 
-router.get('/', function(req,res){
-    cinemas.find({}, function(err, allCinemas){
-        if(err){
+router.get('/', function (req, res) {
+    cinemas.find({}, function (err, allCinemas) {
+        if (err) {
             console.log(err);
         } else {
-            res.render('./cinema/cinema.ejs', {Cinemas: allCinemas});
+            res.render('./cinema/cinema.ejs', { Cinemas: allCinemas });
         }
     });
 });
@@ -36,16 +36,16 @@ router.get('/sorting-ztoa', function (req, res) {
 });
 
 //  Show
-router.get('/:id', function(req,res){
-    cinemas.findById(req.params.id).exec(function(err, foundCinemas){
-        if(err){
+router.get('/:id', function (req, res) {
+    cinemas.findById(req.params.id).exec(function (err, foundCinemas) {
+        if (err) {
             console.log(err);
         } else {
-            movies.find({}, function(err, allMovies){
-                if(err){
+            movies.find({}, function (err, allMovies) {
+                if (err) {
                     console.log(err);
                 } else {
-                    res.render('./cinema/show.ejs', {Movies: allMovies, Cinemas: foundCinemas});
+                    res.render('./cinema/show.ejs', { Movies: allMovies, Cinemas: foundCinemas });
                 }
             });
         }

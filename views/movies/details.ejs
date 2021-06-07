@@ -24,28 +24,34 @@
     </center>
 
     <form action="/movie/<%= Movies._id %>/comment " method="POST">
-      <!-- <div class="mb-3">
-        <label class="form-label">Author</label>
-        <input type="text" class="form-control" name='comment[author]' placeholder='Your username'>
-      </div> -->
       <div class="mb-3">
         <label class="form-label">Comment</label>
         <input type="text" class="form-control" aria-label="comment" name='comment[text]' placeholder='Comment'>
       </div>
       <button type="submit" class="btn btn-primary" value="comment" style="background-color: #45484e; ">Submit</button>
     </form>
-<hr>
-<div class="container">
-  <% Movies.comment.forEach(function(comment){ %>
-    <div class="card card-cover rounded-5 shadow-lg p-2" style=" padding-top: 10px; height: 120px;">
-      <p>
-        <strong style="color: black;">&nbsp;<%= comment.author %></strong>
-      </p>
-      &emsp; <%= comment.text %>
+    <hr>
+    <div class="container">
+      <% Movies.comment.forEach(comment=> { %>
+        <div class="card card-cover rounded-5 shadow-lg p-2" style=" padding-top: 10px; height: 120px;">
+          <p>
+            <strong style="color: black;">&nbsp;<%= comment.author.username %></strong>
+          </p>
+          <% if(!currentUser) {%>
+            <% } else if ( currentUser.priority == 'admin') { %>
+                <form action="/movie/<%= Movies._id %>/comment/<%= comment._id %>/?_method=DELETE" method="POST">
+                    <div class="container-fluid" style="position: relative;">
+                        <button type="submit" class="btn btn-danger" style="bottom: 15px; right: 0px; position: absolute; padding-top: 10px;">Delete</button>
+                    </div>
+                </form>
+            <% } %>
+            &emsp; <%= comment.text %>
+            <p class="pt-3 mb-3 text-end">
+                <%= comment.date %>
+            </p>
+        </div>
+        
+        <% }); %>
     </div>
-    <div class="container-fluid" style="height: 20px;"></div>
-    <% }); %>
-</div>
-
   </div>
   <%- include('../partials/footer.ejs') %>

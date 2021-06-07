@@ -1,7 +1,5 @@
 var express = require('express'),
     router      = express.Router(),
-    middleware  = require('../middleware'),
-    comment     = require('../models/comment');
     movies      = require('../models/movie');
 
     router.get('/', function(req, res){

@@ -1,60 +1,68 @@
 <%- include('../partials/header.ejs') %>
 
-<div class="container-fluid" style="background-color: #383a3f;">
+  <div class="container-fluid" style="background-color: #383a3f;">
     <div class="row">
-        <div class="col">
-            <img src="<%= Cinemas.image %>" width="850" height="450">
-        </div>
-        <div class="col pt-5 text-center">
-            <ul style="list-style-type: none; color: white;">
-                <div class="container-fluid" style="height: 220px;">
-                    <li><h4><%= Cinemas.name %></h4></li>
-                </div>
-                <div class="container-fluid" style="height: 150px;">
-                    <li><h5><%= Cinemas.address %></h5></li>
-                </div>
-            </ul>
-        </div>
+      <div class="col">
+        <img src="<%= Cinemas.image %>" width="850" height="450">
+      </div>
+      <div class="col pt-5 text-center">
+        <ul style="list-style-type: none; color: white;">
+          <div class="container-fluid" style="height: 220px;">
+            <li>
+              <h4>
+                <%= Cinemas.name %>
+              </h4>
+            </li>
+          </div>
+          <div class="container-fluid" style="height: 150px;">
+            <li>
+              <h5>
+                <%= Cinemas.address %>
+              </h5>
+            </li>
+          </div>
+        </ul>
+      </div>
     </div>
 
 
-</div>
+  </div>
 
-<!-- Now showing -->
-<!-- Banner -->
-<div class="container-fluid " style="height: 75px; background-color: #2c2e31; padding-top: 25px;">
+  <!-- Now showing -->
+  <!-- Banner -->
+  <div class="container-fluid " style="height: 75px; background-color: #2c2e31; padding-top: 25px;">
     <h5 style="color: white; text-transform: uppercase; ">
-        &emsp;
-        <span class="dot" style="background-color: #2c2e31; padding-left: 20px;"></span>
+      &emsp;
+      <span class="dot" style="background-color: #2c2e31; padding-left: 20px;"></span>
       Now showing
     </h5>
-</div>
-<!-- End of Banner -->
+  </div>
+  <!-- End of Banner -->
 
-<!-- Poster -->
-<div class="album py-5">
-        <div class="container-fluid" style="padding-top: 2px;">
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                <% Movies.forEach(function(movie){ %>
-                <div class="col">
-                  
-                  <div class="card shadow-sm">
-                    <a href="/session/<%= Cinemas._id %>/<%= movie._id %>">
-                      <img src="<%= movie.image %>" class="card-img-top" height="550px" width="50px" >
-                  </div>
-                  <div class="card-body">
-                    <h5 class="card-title" style="text-align: center;">
-                      <%= movie.name %>
-                    </h5>
-                  </div>
-                  </a>
-                </div>
-                <% }); %>
+  <!-- Poster -->
+  <div class="album py-5">
+    <div class="container-fluid" style="padding-top: 2px;">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <% Movies.forEach(function(movie){ %>
+          <div class="col">
+
+            <div class="card shadow-sm">
+              <a href="/session/<%= Cinemas._id %>/<%= movie._id %>">
+                <img src="<%= movie.image %>" class="card-img-top" height="550px" width="50px">
             </div>
+            <div class="card-body">
+              <h5 class="card-title" style="text-align: center;">
+                <%= movie.name %>
+              </h5>
+            </div>
+            </a>
           </div>
-        </div>
+          <% }); %>
+      </div>
+    </div>
+  </div>
 
-<!-- End of Poster -->
-<!-- End of Now showing -->
+  <!-- End of Poster -->
+  <!-- End of Now showing -->
 
-<%- include('../partials/footer.ejs') %>
+  <%- include('../partials/footer.ejs') %>
