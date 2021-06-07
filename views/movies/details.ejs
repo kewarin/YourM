@@ -23,6 +23,22 @@
       </div>
     </center>
 
+    <div class="container-fluid" style="height: 120px; background-color: rgb(41, 41, 41); position: relative;">
+      <div class="row">
+        <div class="col container-fluid" style="background-color: rgb(26, 26, 26); height: 120px; position: relative;">
+          <h3 class="center" style="color: white;">Reserve</h3>
+        </div>
+        <div class="col-10 pt-3 px-5">
+          
+          <% Cinemas.forEach(cinema=> { %>
+            &emsp;&emsp;
+            <a href="#"><img src="<%= cinema.image %>" style="width: 150px; overflow: hidden;"><% cinema.name %> </a>
+            &emsp;&emsp;&emsp;
+            <% }); %>
+        </div>
+      </div>
+    </div>
+
     <form action="/movie/<%= Movies._id %>/comment " method="POST">
       <div class="mb-3">
         <label class="form-label">Comment</label>
@@ -38,19 +54,20 @@
             <strong style="color: black;">&nbsp;<%= comment.author.username %></strong>
           </p>
           <% if(!currentUser) {%>
-            <% } else if ( currentUser.priority == 'admin') { %>
-                <form action="/movie/<%= Movies._id %>/comment/<%= comment._id %>/?_method=DELETE" method="POST">
-                    <div class="container-fluid" style="position: relative;">
-                        <button type="submit" class="btn btn-danger" style="bottom: 15px; right: 0px; position: absolute; padding-top: 10px;">Delete</button>
-                    </div>
-                </form>
-            <% } %>
-            &emsp; <%= comment.text %>
-            <p class="pt-3 mb-3 text-end">
-                <%= comment.date %>
-            </p>
+            <% } else if ( currentUser.priority=='admin' ) { %>
+              <form action="/movie/<%= Movies._id %>/comment/<%= comment._id %>/?_method=DELETE" method="POST">
+                <div class="container-fluid" style="position: relative;">
+                  <button type="submit" class="btn btn-danger"
+                    style="bottom: 15px; right: 0px; position: absolute; padding-top: 10px;">Delete</button>
+                </div>
+              </form>
+              <% } %>
+                &emsp; <%= comment.text %>
+                  <p class="pt-3 mb-3 text-end">
+                    <%= comment.date %>
+                  </p>
         </div>
-        
+
         <% }); %>
     </div>
   </div>

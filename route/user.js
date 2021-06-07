@@ -23,6 +23,60 @@ var express = require('express'),
     Reserve     = require('../models/reserve'),
     user = require('../models/user');
 
+    router.get('/admin', middleware.checkAdmin, function (req, res) {
+        User.find({ priority: 'user' }, function (err, allUser) {
+            if (err) {
+                console.log(err);
+            } else {
+                User.find({ priority: 'admin' }, function (err, allAdmin) {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        res.render('./user/admin.ejs', { User: allUser, Admin: allAdmin });
+                    }
+                });
+            }
+        });
+    });
+    
+    //  Grant Admin
+    router.post('/admin/grant/:id', middleware.checkAdmin, function (req, res) {
+        User.findByIdAndUpdate(req.params.id,{priority: 'admin'},function (err, result) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log("Updated User : ", result);
+                res.redirect('back');
+            }
+        });
+    });
+    // End of Grant Admin
+    
+    // Forfeit Admin
+    router.post('/admin/forfeit/:id', middleware.checkAdmin, function (req, res) {
+        User.findByIdAndUpdate(req.params.id,{priority: 'user'},function (err, result) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log("Updated User : ", result);
+                res.redirect('back');
+            }
+        });
+    });
+    // End of Forfeit Admin
+    
+    router.post('/admin/delete/:id', middleware.checkAdmin, function (req, res) {
+        User.findByIdAndDelete(req.params.id, function(err, result) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log("Deleted User : ", result);
+                res.redirect('back');
+            }
+        });
+    });
+    
+
 router.get('/:id', middleware.checkProfileOwner, function (req, res) {
     user.findById(req.params.id).exec(function (err, foundUsers) {
         if (err) {

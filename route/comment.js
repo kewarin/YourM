@@ -10,7 +10,7 @@ var express = require('express'),
             if (err) {
                 console.log(err);
             } else {
-                res.redirect('/movie/' + foundMovie._id);
+                res.redirect('back');
             }
         })
     });
