@@ -65,19 +65,7 @@
           <a href="/movie/sorting-ztoa">Z to A</a>
         </div>
       </div>
-      <% Movies.forEach(function(movie){ %>
-      <% if(!currentUser) {%>
-        <% } else if ( currentUser.priority == 'admin' || currentUser.priority == 'superadmin' ) { %>
-            <div class="row" style="bottom: 15px; left: 45px; position: absolute;">
-                <a class="col" href="/movie/<%= movie._id %>/edit">
-                    <button class="btn btn-outline-light" style="height: 45px; width: 65px;">Edit</button>
-                </a>
-                <form class="col" action="/movie/<%= movie._id %>?_method=DELETE" method="POST">
-                    <button class="btn btn-outline-light" style="height: 45px; width: 80px;">Delete</button>
-                </form>
-            </div>
-        <% } %>
-        <% }); %>
+
       <div style="padding: 10px;" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <% Movies.forEach(function(movie){ %>
           <div class="col">
