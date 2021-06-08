@@ -1,176 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/carousel/">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  
-    <link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    <title>Yourmove</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/carousel/">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+  <title>Yourmove</title>
 </head>
+
 <body style="background: linear-gradient( 240deg, #f3ecd1, #dbfcf5);  ">
-    <nav class="navbar navbar-expand-lg" style="background-color: #2c2e31; color:rgb(255, 255, 255);">
-        <div class="container-fluid" >
-          <style>
-            /* Style The Dropdown Button */
-            .dropbtn {
-              background-color: #2c2e31;
-              color: white;
-              padding: 10px;
-              font-size: 16px;
-              border: 10px;
-              cursor: pointer;
-            }
-            
-            /* The container <div> - needed to position the dropdown content */
-            .dropdown {
-              position: relative;
-              display: inline-block;
-            }
-            
-            /* Dropdown Content (Hidden by Default) */
-            .dropdown-content {
-              display: none;
-              position: absolute;
-              background-color: #f9f9f9;
-              min-width: 160px;
-              box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-              z-index: 1;
-            }
-            
-            /* Links inside the dropdown */
-            .dropdown-content a {
-              color: black;
-              padding: 12px 16px;
-              text-decoration: none;
-              display: block;
-            }
-            
-            /* Change color of dropdown links on hover */
-            .dropdown-content a:hover {background-color: #f1f1f1}
-            
-            /* Show the dropdown menu on hover */
-            .dropdown:hover .dropdown-content {
-              display: block;
-            }
-            
-            /* Change the background color of the dropdown button when the dropdown content is shown */
-            .dropdown:hover .dropbtn {
-              background-color: #2c2e31;
-            }
-            </style>
-            
-              <a class="navbar-brand" href="/" style=" background: linear-gradient( 120deg, #ffa69e, #b8f2e6);
+  <nav class="navbar navbar-expand-lg" style="background-color: #2c2e31; color:rgb(255, 255, 255);">
+    <div class="container-fluid">
+      <style>
+        /* Style The Dropdown Button */
+        .dropbtn {
+          background-color: #2c2e31;
+          color: white;
+          padding: 10px;
+          font-size: 16px;
+          border: 10px;
+          cursor: pointer;
+        }
+
+        /* The container <div> - needed to position the dropdown content */
+        .dropdown {
+          position: relative;
+          display: inline-block;
+        }
+
+        /* Dropdown Content (Hidden by Default) */
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: #f9f9f9;
+          min-width: 160px;
+          box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+          z-index: 1;
+        }
+
+        /* Links inside the dropdown */
+        .dropdown-content a {
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+        }
+
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {
+          background-color: #f1f1f1
+        }
+
+        /* Show the dropdown menu on hover */
+        .dropdown:hover .dropdown-content {
+          display: block;
+        }
+
+        /* Change the background color of the dropdown button when the dropdown content is shown */
+        .dropdown:hover .dropbtn {
+          background-color: #2c2e31;
+        }
+      </style>
+
+      <a class="navbar-brand" href="/" style=" background: linear-gradient( 120deg, #ffa69e, #b8f2e6);
               background-size: 150%;
               font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
               -webkit-background-clip: text;
               -webkit-text-fill-color: transparent;"><strong>&nbsp;YourM</strong></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse"  id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/" style="color: rgb(255, 255, 255);">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/cinemas" style="color: rgb(255, 255, 255);">Cinema</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/movie" style="color: rgb(255, 255, 255);">Movie</a>
-              </li>
-            </ul>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/" style="color: rgb(255, 255, 255);">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/cinemas" style="color: rgb(255, 255, 255);">Cinema</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/movie" style="color: rgb(255, 255, 255);">Movie</a>
+          </li>
+        </ul>
+        <div class="container-fluid">
+          <div class="dropdown">
+            <button class="dropbtn">Genre</button>
+            <div class="dropdown-content">
+              <a href="/movie/genre/action">Action</a>
+              <a href="/movie/genre/drama">Drama</a>
+              <a href="/movie/genre/thriller">Thriller</a>
+              <a href="/movie/genre/sci-fi">Sci-fi</a>
+              <a href="/movie/genre/fantasy">Fantasy</a>
+            </div>
+          </div>
+        </div>
+        <form action='/movie/search' method='POST'>
+          <div class="input-group" style="width: 250px;">
+            <input type="text" name="search" class="form-control" placeholder="Search Movies...." aria-label="Search">
+            <button class="btn btn-primary" type="submit"
+              style="background-color: #45484e; border-color:#2c2e31 ;">Search</button>
+          </div>
+        </form>
+      </div>
+      <% if(!currentUser){ %>
+        <a class="nav-link" href="/login" style="color: rgb(255, 255, 255);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle"
+            viewBox="0 0 16 16">
+            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+            <path fill-rule="evenodd"
+              d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+          </svg></a>
+        <% } else if ( currentUser.priority=='admin' || currentUser.priority=='superadmin' ) { %>
+          <right>
             <div class="container-fluid">
               <div class="dropdown">
-                <button class="dropbtn">Genre</button>
-                <div class="dropdown-content">
-                  <a href="/movie/genre/action">Action</a>
-                  <a href="/movie/genre/drama">Drama</a>
-                  <a href="/movie/genre/thriller">Thriller</a>
-                  <a href="/movie/genre/sci-fi">Sci-fi</a>
-                  <a href="/movie/genre/fantasy">Fantasy</a>
+                <button class="dropbtn">Admin</button>
+                <div class="dropdown-content" style="max-width: 25px;">
+                  <a href="/user/<%= currentUser._id  %>">Profile</a>
+                  <a href="/user/<%= currentUser._id %>/ticket">Ticket</a>
+                  <a href="/user/admin">Admin Control</a>
+
                 </div>
               </div>
-            </div>      
-            <form action='/movie/search' method='POST'>
-              <div class="input-group" style="width: 250px;" >
-                <input type="text" name="search" class="form-control" placeholder="Search Movies...." aria-label="Search">
-                <button class="btn btn-primary" type="submit" style="background-color: #45484e; border-color:#2c2e31 ;">Search</button>
-              </div>  
-          </form>
-        </div>
-            <% if(!currentUser){ %> 
-              <a class="nav-link" href="/login" style="color: rgb(255, 255, 255);">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-              </svg></a>
-            <% } else if ( currentUser.priority == 'admin' || currentUser.priority == 'superadmin') { %>
-              <right>  
-                <div class="container-fluid">
-                      <div class="dropdown">
-                        <button class="dropbtn">Admin</button>
-                        <div class="dropdown-content" style="max-width: 25px;" >
-                          <a href="/user/<%= currentUser._id  %>">Profile</a>
-                          <a href="/user/<%= currentUser._id %>/ticket">Ticket</a>
-                          <a href="/user/admin">Admin Control</a>
-                          
-                        </div>
-                      </div>
-                      <a class="nav-link" href="/logout" style="color: rgb(255, 255, 255);">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-door-open" viewBox="0 0 16 16">
-                        <path d="M8.5 10c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z"/>
-                        <path d="M10.828.122A.5.5 0 0 1 11 .5V1h.5A1.5 1.5 0 0 1 13 2.5V15h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117zM11.5 2H11v13h1V2.5a.5.5 0 0 0-.5-.5zM4 1.934V15h6V1.077l-6 .857z"/>
-                      </svg></a>
-                    </div> 
-                  </right>  
-                <% } else { %>
-              <right>  
+              <a class="nav-link" href="/logout" style="color: rgb(255, 255, 255);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                  class="bi bi-door-open" viewBox="0 0 16 16">
+                  <path d="M8.5 10c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z" />
+                  <path
+                    d="M10.828.122A.5.5 0 0 1 11 .5V1h.5A1.5 1.5 0 0 1 13 2.5V15h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117zM11.5 2H11v13h1V2.5a.5.5 0 0 0-.5-.5zM4 1.934V15h6V1.077l-6 .857z" />
+                </svg></a>
+            </div>
+          </right>
+          <% } else { %>
+            <right>
               <div class="container-fluid">
-                    <div class="dropdown">
-                      <a href="" class="d-block link-light text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="<%= currentUser.picture %>" alt="mdo" width="32" height="32" class="rounded-circle">
-                    </a>
-                      <div class="dropdown-content" style="max-width: 25px;" >
-                        <a href="/user/<%= currentUser._id %>">Profile</a>
-                        <a href="/user/<%= currentUser._id %>/ticket">Ticket</a>
-                      </div>
-                    </div>
-                    <a class="nav-link" href="/logout" style="color: rgb(255, 255, 255);">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-door-open" viewBox="0 0 16 16">
-                      <path d="M8.5 10c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z"/>
-                      <path d="M10.828.122A.5.5 0 0 1 11 .5V1h.5A1.5 1.5 0 0 1 13 2.5V15h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117zM11.5 2H11v13h1V2.5a.5.5 0 0 0-.5-.5zM4 1.934V15h6V1.077l-6 .857z"/>
-                    </svg></a>
-                  </div> 
-                </right>  
-              <% } %> 
-          
-        </div>
-      </nav>
+                <div class="dropdown">
+                  <a href="" class="d-block link-light text-decoration-none dropdown-toggle" id="dropdownUser1"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="<%= currentUser.picture %>" alt="mdo" width="32" height="32" class="rounded-circle">
+                  </a>
+                  <div class="dropdown-content" style="max-width: 25px;">
+                    <a href="/user/<%= currentUser._id %>">Profile</a>
+                    <a href="/user/<%= currentUser._id %>/ticket">Ticket</a>
+                  </div>
+                </div>
+                <a class="nav-link" href="/logout" style="color: rgb(255, 255, 255);">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                    class="bi bi-door-open" viewBox="0 0 16 16">
+                    <path d="M8.5 10c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z" />
+                    <path
+                      d="M10.828.122A.5.5 0 0 1 11 .5V1h.5A1.5 1.5 0 0 1 13 2.5V15h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117zM11.5 2H11v13h1V2.5a.5.5 0 0 0-.5-.5zM4 1.934V15h6V1.077l-6 .857z" />
+                  </svg></a>
+              </div>
+            </right>
+            <% } %>
 
-      <% if ( error && error.length > 0 ) { %>
-        <div class="alert alert-danger" role="alert">
-            <%= error %>
-        </div>
+    </div>
+  </nav>
+
+  <% if ( error && error.length> 0 ) { %>
+    <div class="alert alert-danger" role="alert">
+      <%= error %>
+    </div>
     <% } %>
 
-    <% if ( success && success.length > 0 ) { %>
+      <% if ( success && success.length> 0 ) { %>
         <div class="alert alert-success" role="alert">
-            <%= success %>
+          <%= success %>
         </div>
-    <% } %>
+        <% } %>
 
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js" integrity="sha384-lpyLfhYuitXl2zRZ5Bn2fqnhNAKOAaM/0Kr9laMspuaMiZfGmfwRNFh8HlMy49eQ" crossorigin="anonymous"></script>
-      <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-      
-
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+            crossorigin="anonymous"></script>
+          <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+            integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+            crossorigin="anonymous"></script>
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"
+            integrity="sha384-lpyLfhYuitXl2zRZ5Bn2fqnhNAKOAaM/0Kr9laMspuaMiZfGmfwRNFh8HlMy49eQ"
+            crossorigin="anonymous"></script>
+          <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+            crossorigin="anonymous"></script>
+          <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

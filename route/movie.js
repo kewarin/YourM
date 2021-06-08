@@ -16,27 +16,27 @@ storage = multer.diskStorage({
         callback(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
     },
 }),
-imageFilter = function (req, file, callback) {
-    if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/i)) {
-        return callback(new Error('Only JPG, jpeg, PNG and GIF image files are allowed!'), false);
-    }
-    callback(null, true);
-},
-upload = multer({
-    storage: storage,
-    fileFilter: imageFilter,
-}),
-
-Cinemas = require('../models/cinema');
-User    = require('../models/user');
-Liked   = require('../models/liked'); storage = multer.diskStorage({
-        destination: function (req, file, callback) {
-            callback(null, './public/images/user/');
-        },
-        filename: function (req, file, callback) {
-            callback(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
-        },
+    imageFilter = function (req, file, callback) {
+        if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/i)) {
+            return callback(new Error('Only JPG, jpeg, PNG and GIF image files are allowed!'), false);
+        }
+        callback(null, true);
+    },
+    upload = multer({
+        storage: storage,
+        fileFilter: imageFilter,
     }),
+
+    Cinemas = require('../models/cinema');
+User = require('../models/user');
+Liked = require('../models/liked'); storage = multer.diskStorage({
+    destination: function (req, file, callback) {
+        callback(null, './public/images/user/');
+    },
+    filename: function (req, file, callback) {
+        callback(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+    },
+}),
     imageFilter = function (req, file, callback) {
         if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/i)) {
             return callback(new Error('Only JPG, jpeg, PNG and GIF image files are allowed!'), false);
@@ -45,8 +45,8 @@ Liked   = require('../models/liked'); storage = multer.diskStorage({
     },
     upload = multer({ storage: storage, fileFilter: imageFilter }),
 
-    Session     = require('../models/session'),
-    Reserve     = require('../models/reserve');
+    Session = require('../models/session'),
+    Reserve = require('../models/reserve');
 
 
 router.get('/', function (req, res) {
@@ -80,14 +80,14 @@ router.get('/sorting-ztoa', function (req, res) {
 });
 
 //  New
-router.get('/new', middleware.checkAdmin, function(req,res){
+router.get('/new', middleware.checkAdmin, function (req, res) {
     res.render('./movies/new.ejs');
 });
 
-router.post('/new', upload.fields([{ name: 'image' }     ]), function(req, res){
+router.post('/new', upload.fields([{ name: 'image' }]), function (req, res) {
     req.body.movies.image = '/images/movies/uploads/' + req.files['image'][0].filename;
-    movies.create(req.body.movies, function(err, newMovies){
-        if(err){
+    movies.create(req.body.movies, function (err, newMovies) {
+        if (err) {
             console.log(err);
         } else {
             res.redirect('/movies');
@@ -97,22 +97,22 @@ router.post('/new', upload.fields([{ name: 'image' }     ]), function(req, res){
 //  End of New
 
 //  Edit
-router.get('/:id/edit', middleware.checkAdmin,  function(req, res){
-    movies.findById(req.params.id, function( err, foundMovies ){
-        if(err) {
+router.get('/:id/edit', middleware.checkAdmin, function (req, res) {
+    movies.findById(req.params.id, function (err, foundMovies) {
+        if (err) {
             console.log(err);
         } else {
-            res.render('./movies/edit.ejs', {Movies: foundMovies})
+            res.render('./movies/edit.ejs', { Movies: foundMovies })
         }
     });
 });
 
-router.put('/:id', upload.fields([{ name: 'image' } ]), function(req, res){
-    if ( req.files['image'] ){
+router.put('/:id', upload.fields([{ name: 'image' }]), function (req, res) {
+    if (req.files['image']) {
         req.body.movies.image = '/images/movies/uploads/' + req.files['image'][0].filename;
     }
-    movies.findByIdAndUpdate(req.params.id, req.body.movies, function( err, updatedMovies ){
-        if(err) {
+    movies.findByIdAndUpdate(req.params.id, req.body.movies, function (err, updatedMovies) {
+        if (err) {
             console.log(err);
             res.redirect('/movie/')
         } else {
@@ -123,9 +123,9 @@ router.put('/:id', upload.fields([{ name: 'image' } ]), function(req, res){
 //  End of Edit
 
 //  Delete
-router.delete('/:id', function(req, res){
-    movies.findByIdAndRemove(req.params.id, function(err){
-        if(err){
+router.delete('/:id', function (req, res) {
+    movies.findByIdAndRemove(req.params.id, function (err) {
+        if (err) {
             console.log(err);
         } else {
             res.redirect('/movie');
@@ -161,16 +161,16 @@ router.get('/search/:name', function (req, res,) {
 });
 
 
-router.get('/:id', function(req,res){
-    movies.findById(req.params.id).populate('comment').exec(function(err, foundMovies){
-        if(err){
+router.get('/:id', function (req, res) {
+    movies.findById(req.params.id).populate('comment').exec(function (err, foundMovies) {
+        if (err) {
             console.log(err);
         } else {
-            Cinemas.find({}, function(err, allCinemas){
-                if(err){
+            Cinemas.find({}, function (err, allCinemas) {
+                if (err) {
                     console.log(err);
                 } else {
-                    res.render('./movies/details.ejs', {Movies: foundMovies, Cinemas: allCinemas});
+                    res.render('./movies/details.ejs', { Movies: foundMovies, Cinemas: allCinemas });
                 }
             });
         }
@@ -178,6 +178,52 @@ router.get('/:id', function(req,res){
 });
 
 
+router.post('/:id/like', middleware.isLoggedIn, function (req, res) {
+    User.findById(req.user._id, function (err, foundUsers) {
+        if (err) {
+            console.log(err);
+            res.redirect('back');
+        } else {
+            Liked.create({}, function (err, like) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    movies.findById(req.params.id, function (err, foundMovies) {
+                        if (err) {
+                            console.log(err);
+                        } else {
+                            like.movies.id = req.params.id;
+                            like.movies.image = foundMovies.image;
+                            like.movies.desc = foundMovies.desc;
+                            like.movies.name = foundMovies.name;
+                            like.save();
+                            foundUsers.likes.push(like);
+                            foundUsers.save();
+                            res.redirect('back');
+                        }
+                    });
+                }
+            });
+        }
+    });
+});
+
+router.post('/:id/unlike', middleware.isLoggedIn, function (req, res) {
+    User.update({ _id: req.user._id }, { $pull: { likes: req.params.id } }).exec(function (err) {
+        if (err) {
+            console.log(err);
+            res.redirect('back');
+        } else {
+            Liked.findByIdAndRemove(req.params.id, function (err) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    res.redirect('back');
+                }
+            });
+        }
+    });
+});
 
 function isloggedIn(req, res, next) {
     if (req.isAuthenticated()) {

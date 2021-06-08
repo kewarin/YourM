@@ -5,15 +5,15 @@ var express = require('express'),
     user = require('../models/user'),
     comment = require('../models/comment');
 
-    router.delete('/:id', function (req, res) {
-        comment.findByIdAndRemove(req.params.id, function (err) {
-            if (err) {
-                console.log(err);
-            } else {
-                res.redirect('back');
-            }
-        })
-    });
+router.delete('/:id', function (req, res) {
+    comment.findByIdAndRemove(req.params.id, function (err) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.redirect('back');
+        }
+    })
+});
 
 router.post('/', isLoggedIn, function (req, res) {
     movies.findById(req.params.id, function (err, foundMovie) {

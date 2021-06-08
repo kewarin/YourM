@@ -11,7 +11,6 @@ const express = require('express'),
 
 var movieRoutes = require('./route/movie');
 var indexRoutes = require('./route/index'),
-    adminRoutes = require('./route/admin'),
     cinemasRoutes = require('./route/cinema'),
     commentRoutes = require('./route/comment'),
     reserveRoutes = require('./route/reserve');
@@ -51,7 +50,6 @@ app.use(function(req, res, next){
 app.use('/', indexRoutes);
 app.use('/movie', movieRoutes);
 app.use('', indexRoutes);
-app.use('/admin', adminRoutes);
 app.use('/user', userRoutes);
 app.use('/cinemas', cinemasRoutes);
 app.use('/reserve', reserveRoutes);

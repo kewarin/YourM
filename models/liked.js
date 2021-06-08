@@ -7,8 +7,9 @@ var likedSchema = new mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: 'movies'
         },
-        logo: String,
-        banner: String
+        image: String,
+        desc: String,
+        name: String
     },
     date: {
         type: Date,

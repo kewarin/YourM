@@ -22,66 +22,97 @@
         </div>
       </div>
     </center>
-
-    <div class="container-fluid" style="height: 120px; background-color: rgb(41, 41, 41); position: relative;">
-      <div class="row">
-        <div class="col container-fluid" style="background-color: rgb(26, 26, 26); height: 120px; position: relative;">
-          <h3 class="center" style="color: white;">Reserve</h3>
+    <% if(!currentUser) { %>
+      <form action="/login">
+        <button type="submit" class="btn btn-primary">Add to favourite</button>
+      </form>
+      <% } else { %>
+        <div class="container-fluid mt-3" style="height: 50px;">
+          <!-- function for check that user like or not -->
+          <% var lid; %>
+            <% currentUser.likes.forEach(function(liked){ if ( liked.movies.id==Movies.id ) { match=1; lid=liked._id; }
+              }); %>
+              <% if( lid !=null ) { %>
+                <form action="/movie/<%= lid %>/unlike" method="POST">
+                  <center><button type="submit" class="btn btn-primary"
+                      style=" background-color: #45484e; border-color: #2c2e31;">Remove from favourite</button></center>
+                </form>
+                <% } else { %>
+                  <form action="/movie/<%= Movies._id %>/like" method="POST">
+                    <center><button type="submit" class="btn btn-primary"
+                        style=" background-color: #45484e; border-color: #2c2e31;">Add to favourite</button></center>
+                  </form>
+                  <% } %>
         </div>
-        <div class="col-10 pt-3 px-5">
-          
-          <% Cinemas.forEach(cinema=> { %>
-            &emsp;&emsp;
-            <a href="#"><img src="<%= cinema.image %>" style="width: 150px; overflow: hidden;"><% cinema.name %> </a>
-            &emsp;&emsp;&emsp;
-            <% }); %>
-        </div>
-      </div>
-    </div>
+        <% } %>
 
-    <form action="/movie/<%= Movies._id %>/comment " method="POST">
-      <div class="mb-3">
-        <label class="form-label">Comment</label>
-        <input type="text" class="form-control" aria-label="comment" name='comment[text]' placeholder='Comment'>
-      </div>
-      <button type="submit" class="btn btn-primary" value="comment" style="background-color: #45484e; ">Submit</button>
-    </form>
-    <hr>
-    <div class="container">
-      <% Movies.comment.forEach(comment=> { %>
-        <div class="card card-cover rounded-5 shadow-lg p-2" style=" padding-top: 10px; height: 120px;">
-          <p>
-            <strong style="color: black;">&nbsp;<%= comment.author.username %></strong>
-          </p>
-          <% if(!currentUser) {%>
-            <% } else if ( currentUser.priority=='admin' ) { %>
-              <form action="/movie/<%= Movies._id %>/comment/<%= comment._id %>/?_method=DELETE" method="POST">
-                <div class="container-fluid" style="position: relative;">
-                  <button type="submit" class="btn btn-danger"
-                    style="bottom: 15px; right: 0px; position: absolute; padding-top: 10px;">Delete</button>
-                </div>
-              </form>
-              <% } %>
-                &emsp; <%= comment.text %>
-                  <p class="pt-3 mb-3 text-end">
-                    <%= comment.date %>
-                  </p>
-        </div>
+          <div class="container-fluid" style="height: 120px; background-color: rgb(255, 249, 249); position: relative;">
+            <div class="row">
+              <div class="col container-fluid"
+                style="background-color: rgb(255, 255, 255); height: 120px; position: relative;">
+                <h3 class="center" style="color: rgb(31, 31, 31);">Reserve</h3>
+              </div>
+              <div class="col-10 pt-3 px-5">
 
-        <% }); %>
-    </div>
+                <% Cinemas.forEach(cinema=> { %>
+                  &emsp;&emsp;
+                  <a href="#"><img src="<%= cinema.image %>" style="width: 150px; overflow: hidden;">
+                    <% cinema.name %>
+                  </a>
+                  &emsp;&emsp;&emsp;
+                  <% }); %>
+              </div>
+            </div>
+          </div>
+
+          <form action="/movie/<%= Movies._id %>/comment " method="POST">
+            <div class="mb-3">
+              <label class="form-label">Comment</label>
+              <input type="text" class="form-control" aria-label="comment" name='comment[text]' placeholder='Comment'>
+            </div>
+            <button type="submit" class="btn btn-primary" value="comment"
+              style="background-color: #45484e;">Submit</button>
+          </form>
+          <hr>
+          <div class="container">
+            <% Movies.comment.forEach(comment=> { %>
+              <div class="card card-cover rounded-5 shadow-lg p-2" style=" padding-top: 10px; height: 120px;">
+                <p>
+                  <strong style="color: black;">&nbsp;<%= comment.author.username %></strong>
+                </p>
+                <% if(!currentUser) {%>
+                  <% } else if ( currentUser.priority=='admin' ) { %>
+                    <form action="/movie/<%= Movies._id %>/comment/<%= comment._id %>/?_method=DELETE" method="POST">
+                      <div class="container-fluid" style="position: relative;">
+                        <button type="submit" class="btn btn-danger"
+                          style="bottom: 15px; right: 0px; position: absolute; padding-top: 10px;">Delete</button>
+                      </div>
+                    </form>
+                    <% } %>
+                      &emsp; <%= comment.text %>
+                        <p class="pt-3 mb-3 text-end">
+                          <%= comment.date %>
+                        </p>
+              </div>
+
+              <% }); %>
+          </div>
   </div>
 
-    <% if(!currentUser) {%>
-      <% } else if ( currentUser.priority == 'admin' || currentUser.priority == 'superadmin' ) { %>
-          <div class="row" style="bottom: 15px; left: 45px; position: absolute;">
-              <a class="col" href="/movie/<%= Movies._id %>/edit">
-                  <button class="btn btn-outline-light" style="height: 45px; width: 65px;">Edit</button>
-              </a>
-              <form class="col" action="/movie/<%= Movies._id %>?_method=DELETE" method="POST">
-                  <button class="btn btn-outline-light" style="height: 45px; width: 80px;">Delete</button>
-              </form>
-          </div>
+  <% if(!currentUser) {%>
+    <% } else if ( currentUser.priority=='admin' || currentUser.priority=='superadmin' ) { %>
+      <center>
+        <div class="btn-group" role="group" aria-label="Basic example" style="text-align: center;">
+          <a href="/movie/<%= Movies._id %>/edit">
+            <button type="button" class="btn btn-primary"
+              style="background-color: #45484e; border-color: #2c2e31;">Edit</button>
+          </a>
+          <form class="col" action="/movie/<%= Movies._id %>?_method=DELETE" method="POST">
+            <button type="button" class="btn btn-primary"
+              style="background-color: #45484e; border-color: #2c2e31;">Delete</button>
+          </form>
+        </div>
+      </center>
       <% } %>
-  
-  <%- include('../partials/footer.ejs') %>
+
+        <%- include('../partials/footer.ejs') %>
