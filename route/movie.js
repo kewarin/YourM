@@ -29,23 +29,8 @@ storage = multer.diskStorage({
 
     Cinemas = require('../models/cinema');
 User = require('../models/user');
-Liked = require('../models/liked'); storage = multer.diskStorage({
-    destination: function (req, file, callback) {
-        callback(null, './public/images/user/');
-    },
-    filename: function (req, file, callback) {
-        callback(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
-    },
-}),
-    imageFilter = function (req, file, callback) {
-        if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/i)) {
-            return callback(new Error('Only JPG, jpeg, PNG and GIF image files are allowed!'), false);
-        }
-        callback(null, true);
-    },
-    upload = multer({ storage: storage, fileFilter: imageFilter }),
-
-    Session = require('../models/session'),
+Liked = require('../models/liked');
+Session = require('../models/session'),
     Reserve = require('../models/reserve');
 
 
@@ -90,11 +75,23 @@ router.post('/new', upload.fields([{ name: 'image' }]), function (req, res) {
         if (err) {
             console.log(err);
         } else {
-            res.redirect('/movies');
+            res.redirect('/movie');
         }
     });
 });
 //  End of New
+
+//  Delete
+router.delete('/:id', function (req, res) {
+    movies.findByIdAndRemove(req.params.id, function (err) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.redirect('/movie');
+        }
+    })
+});
+//  End of delete
 
 //  Edit
 router.get('/:id/edit', middleware.checkAdmin, function (req, res) {
@@ -122,17 +119,7 @@ router.put('/:id', upload.fields([{ name: 'image' }]), function (req, res) {
 });
 //  End of Edit
 
-//  Delete
-router.delete('/:id', function (req, res) {
-    movies.findByIdAndRemove(req.params.id, function (err) {
-        if (err) {
-            console.log(err);
-        } else {
-            res.redirect('/movie');
-        }
-    })
-});
-//  End of delete
+
 
 router.get('/genre/:genre', function (req, res) {
     movies.find({ genre: new RegExp(req.params.genre, 'i') }, function (err, foundMovies) {

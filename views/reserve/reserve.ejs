@@ -32,7 +32,7 @@
                         <div class="col-3">
                             <% if ( Session.seats.includes('A1') ) { %>
                                 <button type="button" class="seat-button" onclick="reserve('A1')">
-                                    <img class="seat" id="A1" src="/images/reserve/seat.png">
+                                    <img class="seat" id="A1" src="/images/reserve/seat.jpg" >
                                     <input type='hidden' name="A1" id="iA1" value="n">
                                 </button>
                             <% } else { %>
@@ -42,7 +42,7 @@
                         <div class="col-3">
                             <% if ( Session.seats.includes('A2') ) { %>
                                 <button type="button" class="seat-button" name="A2" value="n" onclick="reserve('A2')">
-                                    <img class="seat" id="A2" src="/images/reserve/seat.png">
+                                    <img class="seat" id="A2" src="/images/reserve/seat.jpg">
                                     <input type="hidden" name="A2" id="iA2" value="n">
                                 </button>
                             <% } else { %>
@@ -52,7 +52,7 @@
                         <div class="col-3">
                             <% if ( Session.seats.includes('A3') ) { %>
                                 <button type="button" class="seat-button" name="A3" value="n" onclick="reserve('A3')">
-                                    <img class="seat" id="A3" src="/images/reserve/seat.png">
+                                    <img class="seat" id="A3" src="/images/reserve/seat.jpg">
                                     <input type="hidden" name="A3" id="iA3" value="n">
                                 </button>
                             <% } else { %>
@@ -62,7 +62,7 @@
                         <div class="col-3">
                             <% if ( Session.seats.includes('A4') ) { %>
                                 <button type="button" class="seat-button" name="A4" value="n" onclick="reserve('A4')">
-                                    <img class="seat" id="A4" src="/images/reserve/seat.png">
+                                    <img class="seat" id="A4" src="/images/reserve/seat.jpg">
                                     <input type="hidden" name="A4" id="iA4" value="n">
                                 </button>
                             <% } else { %>
@@ -77,41 +77,41 @@
                         <div class="col-3">
                             <% if ( Session.seats.includes('B1') ) { %>
                                 <button type="button" class="seat-button" name="B1" value="n" onclick="reserve('B1')">
-                                    <img class="seat" id="B1" src="/images/reserve/seat.png">
+                                    <img class="seat" id="B1" src="/images/reserve/seat.jpg">
                                     <input type="hidden" name="B1" id="iB1" value="n">
                                 </button>
                             <% } else { %>
-                                <img class="seat"src="/images/reserve/seat.png" style="opacity: 0.1;">
+                                <img class="seat"src="/images/reserve/seat.jpg" style="opacity: 0.1;">
                             <% } %>
                         </div>
                         <div class="col-3">
                             <% if ( Session.seats.includes('B2') ) { %>
                                 <button type="button" class="seat-button" name="B2" value="n" onclick="reserve('B2')">
-                                    <img class="seat" id="B2" src="/images/reserve/seat.png">
+                                    <img class="seat" id="B2" src="/images/reserve/seat.jpg">
                                     <input type="hidden" name="B2" id="iB2" value="n">
                                 </button>
                             <% } else { %>
-                                <img class="seat"src="/images/reserve/seat.png" style="opacity: 0.1;">
+                                <img class="seat"src="/images/reserve/seat.jpg" style="opacity: 0.1;">
                             <% } %>
                         </div>
                         <div class="col-3">
                             <% if ( Session.seats.includes('B3') ) { %>
                                 <button type="button" class="seat-button" name="B3" value="n" onclick="reserve('B3')">
-                                    <img class="seat" id="B3" src="/images/reserve/seat.png">
+                                    <img class="seat" id="B3" src="/images/reserve/seat.jpg">
                                     <input type="hidden" name="B3" id="iB3" value="n">
                                 </button>
                             <% } else { %>
-                                <img class="seat"src="/images/reserve/seat.png" style="opacity: 0.1;">
+                                <img class="seat"src="/images/reserve/seat.jpg" style="opacity: 0.1;">
                             <% } %>
                         </div>
                         <div class="col-3">
                             <% if ( Session.seats.includes('B4') ) { %>
                                 <button type="button" class="seat-button" name="B4" value="n" onclick="reserve('B4')">
-                                    <img class="seat" id="B4" src="/images/reserve/seat.png">
+                                    <img class="seat" id="B4" src="/images/reserve/seat.jpg">
                                     <input type="hidden" name="B4" id="iB4" value="n">
                                 </button>
                             <% } else { %>
-                                <img class="seat"src="/images/reserve/seat.png" style="opacity: 0.1;">
+                                <img class="seat"src="/images/reserve/seat.jpg" style="opacity: 0.1;">
                             <% } %>
                         </div>
                     </div>
@@ -119,7 +119,7 @@
                 </div>
                 <!-- End of Seat -->
                 
-                <h5 style="bottom: 0; right: 10px; position: absolute;">Price 1 Seat = 80 Baht</h5>
+                <h5 style="bottom: 0; right: 10px; position: absolute;">Price 1 Seat = 90 Baht</h5>
             </div>
 
             <!-- Reservation -->
@@ -128,7 +128,7 @@
                     <img class="col-5 mt-3" src="<%= Movies.image %>" style="height: 200px;">
                     <div class="col mt-3">
                         <h3 style="color: white;"><%= Movies.name %></h3>
-                        <h5 class="desc">Runtime: <%= Movies.runtime %> minutes</h5>
+                        <h5 class="desc">Runtime: <%= Movies.runtime %></h5>
                         <h5 class="desc">Cinema: <%= Cinemas.name %></h5>
                         <h5 class="desc">Theater: <%= Session.theater %></h5>
                         <h5 class="desc">Date: <%= Session.date %>&emsp;</h5>

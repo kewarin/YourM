@@ -31,16 +31,6 @@
                             value="<%= Movies.genre %>">
                     </div>
                     <div class="mb-3">
-                        <label class="form-label" style="color: white;">Director</label>
-                        <input type="text" class="form-control" name="movies[director]"
-                            placeholder="<%= Movies.director %>" value="<%= Movies.director %>">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label" style="color: white;">Date</label>
-                        <input type="text" class="form-control" name="movies[date]" placeholder="<%= Movies.date %>"
-                            value="<%= Movies.date %>">
-                    </div>
-                    <div class="mb-3">
                         <label class="form-label" style="color: white;">Runtime</label>
                         <input type="text" class="form-control" name="movies[runtime]"
                             placeholder="<%= Movies.runtime %>" value="<%= Movies.runtime %>">
@@ -57,17 +47,7 @@
                     <div class="mb-3">
                         <label class="form-label" style="color: white;">Poster</label>
                         <img src="<%= Movies.image %>" height="300px" style="object-fit: cover;">
-                        <input type="file" class="form-control" name="image" accept="image/*">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label" style="color: white;">Logo</label>
-                        <img src="<%= Movies.logo %>" height="300px" style="object-fit: cover;">
-                        <input type="file" class="form-control" name="logo" accept="image/*">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label" style="color: white;">Big scale picture</label>
-                        <img src="<%= Movies.banner %>" height="300px" style="object-fit: cover;">
-                        <input type="file" class="form-control" name="banner" accept="image/*">
+                        <input type="text" class="form-control" name="image" accept="image/*">
                     </div>
                     <div class="mb-3">
                         <label class="form-label" style="color: white;">Trailer</label>
@@ -81,7 +61,6 @@
                     <button class="btn btn-outline-light" type="submit"
                         style="height: 50px; width: 100px; bottom: 15px; right: 15px; position: absolute;">Submit</button>
                 </div>
-
             </div>
         </div>
     </form>

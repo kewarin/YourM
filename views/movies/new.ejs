@@ -9,7 +9,7 @@
             &nbsp;New Movies
         </h5>
     </div>
-    <form action="/movies/new" method="POST" enctype="multipart/form-data">
+    <form action="/movie/new" method="POST" enctype="multipart/form-data">
         <div class="container-fluid bg-dark pt-1" style="height: 100%; width: 100%;">
             <div class="container-fluid mt-5 mb-5" style="width: 800px;">
 
@@ -31,23 +31,13 @@
                             placeholder="ex. Action/Sci-fi">
                     </div>
                     <div class="mb-3">
-                        <label class="form-label" style="color: white;">Director</label>
-                        <input type="text" class="form-control" required="required" name="movies[director]"
-                            placeholder="ex. Tortlew Wutthipat">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label" style="color: white;">Date</label>
-                        <input type="text" class="form-control" required="required" name="movies[date]"
-                            placeholder="ex. October 17, 2000">
-                    </div>
-                    <div class="mb-3">
                         <label class="form-label" style="color: white;">Runtime</label>
-                        <input type="number" class="form-control" required="required" name="movies[runtime]"
+                        <input type="text" class="form-control" required="required" name="movies[runtime]"
                             placeholder="ex. 112">
                     </div>
                     <div class="mb-3">
                         <label class="form-label" style="color: white;">Score</label>
-                        <input type="number" class="form-control" required="required" name="movies[score]"
+                        <input type="text" class="form-control" required="required" name="movies[score]"
                             placeholder="ex. 10.0">
                     </div>
                 </div>
@@ -58,14 +48,7 @@
                         <label class="form-label" style="color: white;">Poster</label>
                         <input type="file" class="form-control" required="required" name="image" accept="image/*">
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label" style="color: white;">Logo</label>
-                        <input type="file" class="form-control" required="required" name="logo" accept="image/*">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label" style="color: white;">Big scale picture</label>
-                        <input type="file" class="form-control" required="required" name="banner" accept="image/*">
-                    </div>
+                    
                     <div class="mb-3">
                         <label class="form-label" style="color: white;">Trailer</label>
                         <input type="url" class="form-control" name="movies[trailer]" required="required"
