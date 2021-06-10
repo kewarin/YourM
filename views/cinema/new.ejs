@@ -1,0 +1,46 @@
+<%- include('../partials/header.ejs') %>
+
+    <!-- Banner -->
+
+    <h3 class="display-5 fw-bold"
+        style="text-align: center; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; background-color: #2c2e31; color: rgb(255, 255, 255); padding: 20px;">
+        New Movies</h3>
+    <form action="/cinemas/new" method="POST" enctype="multipart/form-data">
+        <div class="container-fluid " style="height: 100%; width: 100%;">
+            <div class="container-fluid mt-5 mb-5" style="width: 80%;">
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label">Name :</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" required="required" name="cinema[name]"
+                            placeholder="Name Cinemas">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label">Address :</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" required="required" name="cinema[address]"
+                            placeholder="Address">
+                    </div>
+                </div>
+
+
+                <hr>
+                <div class="row mb-3">
+                    <label class="form-label">Picture :</label>
+                    <div class="col-sm-10">
+                        <input type="file" class="form-control" required="required" name="image" accept="image/*">
+                    </div>
+                </div>
+
+                <div style="height: 45px;"></div>
+                <div class="container-fluid" style="height: 100%; position: relative;">
+                    <button class="btn btn-outline-secondary" type="submit"
+                        style="height: 50px; width: 100px; bottom: 15px; right: 15px; position: absolute;">Submit</button>
+                </div>
+
+            </div>
+        </div>
+    </form>
+
+
+    <%- include('../partials/footer.ejs') %>

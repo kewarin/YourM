@@ -110,7 +110,7 @@ router.get('/:id/ticket', middleware.checkProfileOwner, function (req, res) {
     });
 });
 
-router.post('/:id', middleware.checkProfileOwner, upload.single('image'), function (req, res){
+router.post('/:id', middleware.checkProfileOwner, upload.fields([{name: 'image' }]), function (req, res){
     user.findByIdAndUpdate(req.params.id,
         {
             picture: '/images/user/' + req.file.filename

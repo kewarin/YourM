@@ -85,5 +85,16 @@
       </div>
     </div>
   </div>
+<hr>
+  <% if(!currentUser) {%>
+    <% } else if ( currentUser.priority=='admin' ) { %>
+      <center>
+        <div class="btn-group" role="group" aria-label="Basic example" style="text-align: center;">
+          <a href="/cinemas/new">
+            <button type="button" class="btn btn-outline-secondary" style="height: 50px; width: 500px;">Add new Cinemas</button>
+          </a>
+        </div>
+      </center>
+      <% } %>
 
   <%- include('../partials/footer.ejs') %>

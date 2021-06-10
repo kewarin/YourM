@@ -1,44 +1,44 @@
 <%- include('../partials/header.ejs') %>
-
+<style>
+    img {
+        border-radius: 50%;
+    }
+</style>
     <!-- Banner -->
-
-    <div class="container-fluid d-flex flex-row px-3 pt-4" style="height: 75px; background-color: #383a3f;">
-        &emsp;
-        <h5 style="color: white; text-transform: uppercase;">
-            <span class="dot" style="background-color: rgb(0, 255, 106); margin-bottom: 1px;"></span>
-            &nbsp;PROFILE
-        </h5>
-    </div>
+    <h1 class="display-5 fw-bold"
+    style="text-align: left; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; background-color: #2c2e31; font-size: 35px;  color: rgb(255, 255, 255); padding: 20px;">
+    Profile</h1>
+    <br />
     <form action="/user/<%= User._id %>" method="POST" enctype="multipart/form-data">
         <div class="container-fluid d-flex flex-row row px-3 pt-4"
             style="height: 360px;">
             &emsp;
-            <div class="col-3">
+            <div class="col-3" style="padding-left: 65px;">
                 <img src="<%= User.picture %>" height="250px" width="250px">
-                    <div style="width: 250px;">
-                        &nbsp;
-                        <input type="file" class="form-control" name="image" accept="image/*">
-                    </div>
             </div>
             <div class="col container-fluid" style="height: 100%; position: relative;">
-                <h5 style="font-size: 45px; color: white; text-transform: uppercase;">
-                    <%= User.username %>
-                </h5>
-                <button type="submit"
+                <div class="row mb-3">
+                    <h5 style=" text-transform: uppercase;">
+                       Name : <%= User.username %>
+                    </h5>
+                </div>
+                <div class="row mb-3">
+                    <label class="form-label">Change &nbsp; Photo :</label>
+                    <div class="col-sm-10">
+                        <input type="file" class="form-control" name="image" accept="image/*">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-outline-success"
                     style="height: 50px; width: 100px; bottom: 15px; right: 15px; position: absolute;">Submit</button>
             </div>
         </div>
     </form>
 
     <!-- Banner -->
+    <h1 class="display-5 fw-bold"
+    style="text-align: left; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; background-color: #2c2e31; font-size: 35px; color: rgb(255, 255, 255); padding: 20px;">
+    Favourtie Movies</h1>
 
-    <div class="container-fluid d-flex flex-row px-3 pt-4" style="height: 75px; background-color: #383a3f;">
-        &emsp;
-        <h5 style="color: white; text-transform: uppercase;">
-            <span class="dot" style="background-color: rgb(255, 0, 157); margin-bottom: 1px;"></span>
-            &nbsp;favourtie movies
-        </h5>
-    </div>
     <div class="album py-5">
         <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
