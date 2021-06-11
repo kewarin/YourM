@@ -18,9 +18,6 @@
           <h5 class="card-title"><%= user.priority %></h5>
           <p class="card-text">Username : <%= user.username %></p>
           <div class="text-end mt-2">
-            <form action="/user/admin/grant/<%= user._id %>" method="POST">
-                <button type="submit" class="btn btn-outline-dark" style="width: 200px">Grant Admin</button>
-            </form>
             &nbsp;
             <form action="/user/admin/delete/<%= user._id %>" method="POST">
                 <button type="submit" class="btn btn-outline-dark" style="width: 200px">Delete Account</button>

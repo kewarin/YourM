@@ -81,8 +81,8 @@
 
           <form action="/movie/<%= Movies._id %>/comment " method="POST">
             <div class="form-floating">
-              <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-              <label for="floatingTextarea2">Comments</label>
+              <input class="form-control" name='comment[text]' required="required" placeholder='Comment' style="height: 100px"></input>
+              <label >Comments</label>
             </div><br />
             &emsp;
             <button type="submit" class="btn btn-primary" value="comment"

@@ -28,29 +28,17 @@
 
 
 <!-- Banner -->
-<div class="container-fluid px-3" style="height: 75px; background-color: rgb(0, 0, 0);">
-    <div class="row">
-        <h5 class="col pt-4" style="color: white; text-transform: uppercase;">
-            &emsp;
-            <span class="dot" style="background-color: rgb(255, 0, 0); margin-bottom: 1px;"></span>
-            Current Showtime
-        </h5>
-        <div class="col-3 pt-2">
-            <img src="<%= Cinemas.logo %>" width="100px" style="float: right;">
-        </div>
-    </div>
-</div>
-
+<h1 class="display-5 fw-bold"
+style="text-align: left; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; background-color: #2c2e31; font-size: 35px;  color: rgb(255, 255, 255); padding: 20px 20px;">
+&nbsp;Select Showtime</h1>
 <!-- ------- Theater 1 ------- -->
 <form action="/session/<%= Cinemas.id %>/<%= Movies.id %>" method="POST">
-    <div class="container-fluid px-1 pt-3" style="height: 70px; background-color: rgb(26, 26, 26);">
-        <h4 style="color: white;">
+    <div class="container-fluid px-1 pt-3" style="height: 70px; " align="right">
+        <h4>
             &emsp;
-            <select class="btn btn-secondary" onchange="check(this.value)" id="selectDay" name="session[date]" id="day" required style="font-size: 20px;">
+            <select class="btn btn-dark" onchange="check(this.value)" id="selectDay" name="session[date]" id="day" required style="font-size: 20px;">
                 <option name="session[date]" value="<%= D1 %>"><%= D1 %></option>
                 <option name="session[date]" value="<%= D2 %>"><%= D2 %></option>
-                <option name="session[date]" value="<%= D3 %>"><%= D3 %></option>
-                <option name="session[date]" value="<%= D4 %>"><%= D4 %></option>
             </select>
             &emsp;
         </h4>
@@ -58,50 +46,51 @@
 
     <!-- End of Banner -->
 
-    <div class="container-fluid px-3 pt-3" style="height: 280px; background-color: rgb(61, 61, 61); position: relative;">
-        
-        <img class="mx-3" src="<%= Movies.image %>" height="250px" style="display: inline-block;">
-        
-        <h3 class="sessionMoviesTemplate" style="top: 50px; color: white;">
-            <%= Movies.name %>
-        </h3>
+    <div class="container-fluid d-flex flex-row " style=" background-color: rgba(151, 137, 141, 0.356); font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #2c2e31 ; border: 2px solid; width: 1000px; height: auto;">
+        &emsp;
+        <div class="col-3" style="padding-left: 100px;">
+            <img src="<%= Movies.image %>" height="350px" width="250px" style="display: inline-block; padding: 15px;">
+        </div>
+        <div class="col container-fluid" style="height: 100%;">
+            <br />
+            <div class="row mb-3" style="padding-left: 200px;">
+                <h5 class="sessionMoviesTemplate" >
+                    Name : <%= Movies.name %>
+                </h5>
+            </div>
+            <div class="row mb-3" style="padding-left: 200px;">
+                <h5 class="sessionMoviesTemplate" >
+                    Genre : <%= Movies.genre %>
+                </h5>
+            </div>
+            <div class="row mb-3" style="padding-left: 200px;">
+                <h5 class="sessionMoviesTemplate" >
+                    Runtime : <%= Movies.runtime %>
+                </h5>
+            </div>
 
-        <h5 class="sessionMoviesTemplate" style="top: 110px; color: rgb(189, 189, 189);">
-            &nbsp;
-            <span style="color: white;">
-                Genre:
-            </span> 
-            <%= Movies.genre %>
-        </h5>
-
-        <h5 class="sessionMoviesTemplate" style="top: 150px; color: rgb(189, 189, 189);">
-            &nbsp;
-            <span style="color: white;">
-                Director:
-            </span> 
-            <%= Movies.director %>
-        </h5>
-
-        <h5 class="sessionMoviesTemplate" style="top: 190px; color: rgb(189, 189, 189);">
-            &nbsp;
-            <span style="color: white;">
-                Runtime:
-            </span> 
-            <%= Movies.runtime %> minutes
-        </h5>
-
+        </div>
     </div>
-
-    <div class="container-fluid" style="height: 120px; background-color: rgb(41, 41, 41); position: relative;">
+        
+    <br />
+    <hr>
+    <br />
+    <div class="row mb-3" style="padding-left: 200px;">
+        <h1 class="sessionMoviesTemplate" >
+            Cinemas : <%= Cinemas.name %>
+        </h1>
+    </div>
+<br />
+    <div class="container-fluid" style="height: 120px; padding-left: 300px;  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #2c2e31 ;">
         <div class="row">
-            <div class="col container-fluid" style="background-color: rgb(26, 26, 26); height: 120px; position: relative;">
-                <h3 class="center" style="color: white;">Theater 1</h3>
+            <div class="col container-fluid" style = "height: 120px; position: relative;">
+                <h3 class="center" >Theater 1 : </h3>
             </div>
             <div class="col-10 pt-3 px-5">
-                <button id="11" type="submit" name="session[time]" class="sessionTimeButton" value="11:00">11:00</button>
-                <button id="15" type="submit" name="session[time]" class="sessionTimeButton" value="15:00">15:00</button>
-                <button id="18" type="submit" name="session[time]" class="sessionTimeButton" value="18:00">18:00</button>
-                <button id="21" type="submit" name="session[time]" class="sessionTimeButton" value="21:00">21:00</button>
+                <button id="10" type="submit" name="session[time]" class="sessionTimeButton" value="10:00">10:00</button>
+                <button id="14" type="submit" name="session[time]" class="sessionTimeButton" value="14:00">14:00</button>
+                <button id="17" type="submit" name="session[time]" class="sessionTimeButton" value="17:00">17:00</button>
+                <button id="20" type="submit" name="session[time]" class="sessionTimeButton" value="20:00">20:00</button>
             </div>  
         </div>
     </div>
@@ -111,14 +100,15 @@
 
 <!-- ------- Theater 2 ------- -->
 <form action="/session/<%= Cinemas.id %>/<%= Movies.id %>" method="POST">
-    <div class="container-fluid" style="height: 120px; background-color: rgb(41, 41, 41); position: relative;">
+    <div class="container-fluid" style="height: 120px;   padding-left: 300px;  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #2c2e31 ;">
         <div class="row">
-            <div class="col container-fluid" style="background-color: rgb(26, 26, 26); height: 120px; position: relative;">
-                <h3 class="center" style="color: white;">Theater 2</h3>
+            <div class="col container-fluid" style="height: 120px;">
+                <h3 class="center">Theater 2 :</h3>
             </div>
             <div class="col-10 pt-3 px-5">
-                <button id="13" type="submit" name="session[time]" class="sessionTimeButton" value="13:00">13:00</button>
-                <button id="16" type="submit" name="session[time]" class="sessionTimeButton" value="16:00">16:00</button>
+                <button id="12" type="submit" name="session[time]" class="sessionTimeButton" value="12:00">12:00</button>
+                <button id="18" type="submit" name="session[time]" class="sessionTimeButton" value="18:00">18:00</button>
+                <button id="21" type="submit" name="session[time]" class="sessionTimeButton" value="21:00">21:00</button>
             </div>  
         </div>
     </div>
@@ -137,51 +127,58 @@
     var today = weekday[todayDay] + ' ' + todayDate + ' ' + month[todayMonth];
     var selectDay = document.getElementById("selectDay").value;
     if ( today == selectDay ) {
-        if ( hours == 11 && minutes > 15 || hours > 11 ){
-            document.getElementById("11").disabled = true;
+        if ( hours == 10 && minutes > 30 || hours > 10 ){
+            document.getElementById("10").disabled = true;
         }
-        if ( hours >= 13 && minutes > 15 || hours > 13 ){
-            document.getElementById("13").disabled = true;
+        if ( hours >= 12 && minutes > 30 || hours > 12 ){
+            document.getElementById("12").disabled = true;
         }
-        if ( hours >= 15 && minutes > 15 || hours > 15 ){
-            document.getElementById("15").disabled = true;
+        if ( hours >= 14 && minutes > 30 || hours > 14 ){
+            document.getElementById("14").disabled = true;
         }
-        if ( hours >= 16 && minutes > 15 || hours > 16 ){
-            document.getElementById("16").disabled = true;
+        if ( hours >= 17 && minutes > 30 || hours > 17 ){
+            document.getElementById("17").disabled = true;
         }
-        if ( hours >= 18 && minutes > 15 || hours > 18 ){
+        if ( hours >= 18 && minutes > 30 || hours > 18 ){
             document.getElementById("18").disabled = true;
         }
-        if ( hours >= 21 && minutes > 15 || hours > 21 ){
+        if ( hours >= 20 && minutes > 30 || hours > 20 ){
+            document.getElementById("20").disabled = true;
+        }
+        if ( hours >= 21 && minutes > 30 || hours > 21 ){
             document.getElementById("21").disabled = true;
         }
     }
     function check(checkSelectDay) {
         if ( today == checkSelectDay ) {
-            if ( hours >= 11 && minutes > 15 || hours > 11 ){
-                document.getElementById("11").disabled = true;
+            if ( hours >= 10 && minutes > 30 || hours > 10 ){
+                document.getElementById("10").disabled = true;
             }
-            if ( hours >= 13 && minutes > 15 || hours > 13 ){
-                document.getElementById("13").disabled = true;
+            if ( hours >= 12 && minutes > 30 || hours > 12 ){
+                document.getElementById("12").disabled = true;
             }
-            if ( hours >= 15 && minutes > 15 || hours > 15 ){
-                document.getElementById("15").disabled = true;
+            if ( hours >= 14 && minutes > 30 || hours > 14 ){
+                document.getElementById("14").disabled = true;
             }
-            if ( hours >= 16 && minutes > 15 || hours > 16 ){
-                document.getElementById("16").disabled = true;
+            if ( hours >= 17 && minutes > 30 || hours > 17 ){
+                document.getElementById("17").disabled = true;
             }
-            if ( hours >= 18 && minutes > 15 || hours > 18 ){
+            if ( hours >= 18 && minutes > 30 || hours > 18 ){
                 document.getElementById("18").disabled = true;
             }
-            if ( hours >= 21 && minutes > 15 || hours > 21 ){
+            if ( hours >= 20 && minutes > 30 || hours > 20 ){
+                document.getElementById("20").disabled = true;
+            }
+            if ( hours >= 21 && minutes > 30 || hours > 21 ){
                 document.getElementById("21").disabled = true;
             }
         } else if ( today != checkSelectDay ) {
-            document.getElementById("11").disabled = false;
-            document.getElementById("13").disabled = false;
-            document.getElementById("15").disabled = false;
-            document.getElementById("16").disabled = false;
+            document.getElementById("10").disabled = false;
+            document.getElementById("12").disabled = false;
+            document.getElementById("14").disabled = false;
+            document.getElementById("17").disabled = false;
             document.getElementById("18").disabled = false;
+            document.getElementById("20").disabled = false;
             document.getElementById("21").disabled = false;
         }
     }

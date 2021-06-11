@@ -1,6 +1,6 @@
 <%- include('../partials/header.ejs') %>
 <style>
-    img {
+    .user {
         border-radius: 50%;
     }
 </style>
@@ -14,7 +14,7 @@
             style="height: 360px;">
             &emsp;
             <div class="col-3" style="padding-left: 65px;">
-                <img src="<%= User.picture %>" height="250px" width="250px">
+                <img src="<%= User.picture %>" class="user" height="250px" width="250px">
             </div>
             <div class="col container-fluid" style="height: 100%; position: relative;">
                 <div class="row mb-3">
