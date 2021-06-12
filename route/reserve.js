@@ -58,6 +58,12 @@ router.post('/:id', middleware.isLoggedIn, function (req, res) {
                     if (req.body.A4 == 'y') {
                         reserveSeat('A4', reserve._id);
                     }
+                    if (req.body.A5 == 'y') {
+                        reserveSeat('A5', reserve._id);
+                    }
+                    if (req.body.A6 == 'y') {
+                        reserveSeat('A6', reserve._id);
+                    }
                     if (req.body.B1 == 'y') {
                         reserveSeat('B1', reserve._id);
                     }
@@ -70,6 +76,12 @@ router.post('/:id', middleware.isLoggedIn, function (req, res) {
                     if (req.body.B4 == 'y') {
                         reserveSeat('B4', reserve._id);
                     }
+                    if (req.body.B5 == 'y') {
+                        reserveSeat('B5', reserve._id);
+                    }
+                    if (req.body.B6 == 'y') {
+                        reserveSeat('B6', reserve._id);
+                    }
                     if (req.body.C1 == 'y') {
                         reserveSeat('C1', reserve._id);
                     }
@@ -81,6 +93,12 @@ router.post('/:id', middleware.isLoggedIn, function (req, res) {
                     }
                     if (req.body.C4 == 'y') {
                         reserveSeat('C4', reserve._id);
+                    }
+                    if (req.body.C5 == 'y') {
+                        reserveSeat('C5', reserve._id);
+                    }
+                    if (req.body.C6 == 'y') {
+                        reserveSeat('C6', reserve._id);
                     }
 
                     res.redirect('/user/' + req.user._id + '/ticket');

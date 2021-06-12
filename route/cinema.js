@@ -36,14 +36,14 @@ router.get('/sorting-ztoa', function (req, res) {
 });
 
 //  New
-router.get('/new', middleware.checkAdmin, function(req,res){
+router.get('/new', middleware.checkAdmin, function (req, res) {
     res.render('./cinema/new.ejs');
 });
 
-router.post('/new', upload.fields([{ name: 'image' }]), function(req, res){
+router.post('/new', upload.fields([{ name: 'image' }]), function (req, res) {
     req.body.cinema.image = '/images/cinema/uploads/' + req.files['image'][0].filename;
-    Cinemas.create(req.body.cinema, function(err, newCinemas){
-        if(err){
+    Cinemas.create(req.body.cinema, function (err, newCinemas) {
+        if (err) {
             console.log(err);
         } else {
             res.redirect('/cinemas');
@@ -53,22 +53,22 @@ router.post('/new', upload.fields([{ name: 'image' }]), function(req, res){
 //  End of New
 
 //  Edit
-router.get('/:id/edit', middleware.checkAdmin,  function(req, res){
-    Cinemas.findById(req.params.id, function( err, foundCinemas ){
-        if(err) {
+router.get('/:id/edit', middleware.checkAdmin, function (req, res) {
+    Cinemas.findById(req.params.id, function (err, foundCinemas) {
+        if (err) {
             console.log(err);
         } else {
-            res.render('./cinema/edit.ejs', {Cinemas: foundCinemas})
+            res.render('./cinema/edit.ejs', { Cinemas: foundCinemas })
         }
     });
 });
 
-router.put('/:id', upload.fields([{ name: 'image' }]), function(req, res){
-    if ( req.files['image'] ){
+router.put('/:id', upload.fields([{ name: 'image' }]), function (req, res) {
+    if (req.files['image']) {
         req.body.cinema.image = '/images/cinema/uploads/' + req.files['image'][0].filename;
     }
-    Cinemas.findByIdAndUpdate(req.params.id, req.body.cinema, function( err, updatedCinemas ){
-        if(err) {
+    Cinemas.findByIdAndUpdate(req.params.id, req.body.cinema, function (err, updatedCinemas) {
+        if (err) {
             console.log(err);
             res.redirect('/cinemas/')
         } else {
@@ -79,9 +79,9 @@ router.put('/:id', upload.fields([{ name: 'image' }]), function(req, res){
 //  End of Edit
 
 //  Delete
-router.delete('/:id', function(req, res){
-    Cinemas.findByIdAndRemove(req.params.id, function(err){
-        if(err){
+router.delete('/:id', function (req, res) {
+    Cinemas.findByIdAndRemove(req.params.id, function (err) {
+        if (err) {
             console.log(err);
         } else {
             res.redirect('/cinemas');
