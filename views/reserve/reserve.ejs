@@ -270,7 +270,7 @@
                     </center>
                     <!-- End of Seat -->
                     <br />
-                    <h5 style="bottom: 0; right: 10px; position: absolute;">Price 1 Seat = 90 Baht</h5>
+                    <h5 style="bottom: 0; right: 10px; position: absolute;">Price 1 Seat = 120 Baht</h5>
                 </div>
 
                 <!-- Reservation -->
@@ -328,7 +328,7 @@
                 document.getElementById(selectedSeat).style.opacity = '0.5';
                 document.getElementById('i' + selectedSeat).value = 'y';
                 seat += 1;
-                price += 90;
+                price += 120;
                 document.getElementById("seat").innerHTML = seat;
                 document.getElementById("price").innerHTML = price;
             }
@@ -337,7 +337,7 @@
                 document.getElementById('i' + selectedSeat).value = 'n';
 
                 seat -= 1;
-                price -= 90;
+                price -= 120;
                 document.getElementById("seat").innerHTML = seat;
                 document.getElementById("price").innerHTML = price;
             }
