@@ -40,7 +40,7 @@ router.get('/new', middleware.checkAdmin, function(req,res){
     res.render('./cinema/new.ejs');
 });
 
-router.post('/new', upload.fields([{ name: 'image' }, { name: 'logo' } ]), function(req, res){
+router.post('/new', upload.fields([{ name: 'image' }]), function(req, res){
     req.body.cinema.image = '/images/cinema/uploads/' + req.files['image'][0].filename;
     Cinemas.create(req.body.cinema, function(err, newCinemas){
         if(err){

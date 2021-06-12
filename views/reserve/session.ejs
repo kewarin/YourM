@@ -14,6 +14,12 @@
 <% var Time4 = new Date(Time3) %>
 <% Time4.setDate(Time4.getDate() + 1) %>
 
+<% var Time5 = new Date(Time4) %>
+<% Time5.setDate(Time5.getDate() + 1) %>
+
+<% var Time6 = new Date(Time5) %>
+<% Time6.setDate(Time6.getDate() + 1) %>
+
 <% var Day1 = Time1.getDay(), Month1 = Time1.getMonth(), Date1 = Time1.getDate(); %>
 <% var D1 = weekday[Day1] + ' ' + Date1 + ' ' + month[Month1]; %>
 
@@ -26,6 +32,11 @@
 <% var Day4 = Time4.getDay(), Month4 = Time4.getMonth(), Date4 = Time4.getDate(); %>
 <% var D4 = weekday[Day4] + ' ' + Date4 + ' ' + month[Month4]; %>
 
+<% var Day5 = Time5.getDay(), Month5 = Time5.getMonth(), Date5 = Time5.getDate(); %>
+<% var D5 = weekday[Day5] + ' ' + Date5 + ' ' + month[Month5]; %>
+
+<% var Day6 = Time6.getDay(), Month6 = Time6.getMonth(), Date6 = Time6.getDate(); %>
+<% var D6 = weekday[Day6] + ' ' + Date6 + ' ' + month[Month6]; %>
 
 <!-- Banner -->
 <h1 class="display-5 fw-bold"
@@ -39,6 +50,10 @@ style="text-align: left; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Treb
             <select class="btn btn-dark" onchange="check(this.value)" id="selectDay" name="session[date]" id="day" required style="font-size: 20px;">
                 <option name="session[date]" value="<%= D1 %>"><%= D1 %></option>
                 <option name="session[date]" value="<%= D2 %>"><%= D2 %></option>
+                <option name="session[date]" value="<%= D3 %>"><%= D3 %></option>
+                <option name="session[date]" value="<%= D4 %>"><%= D4 %></option>
+                <option name="session[date]" value="<%= D5 %>"><%= D5 %></option>
+                <option name="session[date]" value="<%= D6 %>"><%= D6 %></option>
             </select>
             &emsp;
         </h4>
@@ -68,7 +83,11 @@ style="text-align: left; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Treb
                     Runtime : <%= Movies.runtime %>
                 </h5>
             </div>
-
+            <div class="row mb-3" style="padding-left: 200px;">
+                <h5 class="sessionMoviesTemplate" >
+                    Description : <%= Movies.desc %>
+                </h5>
+            </div>
         </div>
     </div>
         
@@ -81,6 +100,8 @@ style="text-align: left; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Treb
         </h1>
     </div>
 <br />
+
+
     <div class="container-fluid" style="height: 120px; padding-left: 300px;  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #2c2e31 ;">
         <div class="row">
             <div class="col container-fluid" style = "height: 120px; position: relative;">
@@ -89,7 +110,7 @@ style="text-align: left; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Treb
             <div class="col-10 pt-3 px-5">
                 <button id="10" type="submit" name="session[time]" class="sessionTimeButton" value="10:00">10:00</button>
                 <button id="14" type="submit" name="session[time]" class="sessionTimeButton" value="14:00">14:00</button>
-                <button id="17" type="submit" name="session[time]" class="sessionTimeButton" value="17:00">17:00</button>
+                <button id="16" type="submit" name="session[time]" class="sessionTimeButton" value="16:00">16:00</button>
                 <button id="20" type="submit" name="session[time]" class="sessionTimeButton" value="20:00">20:00</button>
             </div>  
         </div>
@@ -106,15 +127,33 @@ style="text-align: left; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Treb
                 <h3 class="center">Theater 2 :</h3>
             </div>
             <div class="col-10 pt-3 px-5">
-                <button id="12" type="submit" name="session[time]" class="sessionTimeButton" value="12:00">12:00</button>
+                <button id="13" type="submit" name="session[time]" class="sessionTimeButton" value="13:00">13:00</button>
                 <button id="18" type="submit" name="session[time]" class="sessionTimeButton" value="18:00">18:00</button>
-                <button id="21" type="submit" name="session[time]" class="sessionTimeButton" value="21:00">21:00</button>
+                
             </div>  
         </div>
     </div>
     <input type="hidden" name="session[theater]" value="2">
 </form>
 <!-- ------- End of Theater 2 ------- -->
+
+<!-- ------- Theater 3 ------- -->
+<form action="/session/<%= Cinemas.id %>/<%= Movies.id %>" method="POST">
+    <div class="container-fluid" style="height: 120px;   padding-left: 300px;  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #2c2e31 ;">
+        <div class="row">
+            <div class="col container-fluid" style="height: 120px;">
+                <h3 class="center">Theater 3 :</h3>
+            </div>
+            <div class="col-10 pt-3 px-5">
+                <button id="11" type="submit" name="session[time]" class="sessionTimeButton" value="11:00">11:00</button>
+                <button id="15" type="submit" name="session[time]" class="sessionTimeButton" value="15:00">15:00</button>
+                <button id="19" type="submit" name="session[time]" class="sessionTimeButton" value="19:00">19:00</button>
+            </div>  
+        </div>
+    </div>
+    <input type="hidden" name="session[theater]" value="3">
+</form>
+<!-- ------- End of Theater 3 ------- -->
 
 
 <script>
@@ -130,11 +169,17 @@ style="text-align: left; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Treb
         if ( hours == 10 && minutes > 30 || hours > 10 ){
             document.getElementById("10").disabled = true;
         }
+        if ( hours == 11 && minutes > 30 || hours > 11 ){
+            document.getElementById("11").disabled = true;
+        }
         if ( hours >= 12 && minutes > 30 || hours > 12 ){
             document.getElementById("12").disabled = true;
         }
         if ( hours >= 14 && minutes > 30 || hours > 14 ){
             document.getElementById("14").disabled = true;
+        }
+        if ( hours == 15 && minutes > 30 || hours > 15 ){
+            document.getElementById("15").disabled = true;
         }
         if ( hours >= 17 && minutes > 30 || hours > 17 ){
             document.getElementById("17").disabled = true;
@@ -142,11 +187,11 @@ style="text-align: left; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Treb
         if ( hours >= 18 && minutes > 30 || hours > 18 ){
             document.getElementById("18").disabled = true;
         }
+        if ( hours == 19 && minutes > 30 || hours > 19 ){
+            document.getElementById("19").disabled = true;
+        }
         if ( hours >= 20 && minutes > 30 || hours > 20 ){
             document.getElementById("20").disabled = true;
-        }
-        if ( hours >= 21 && minutes > 30 || hours > 21 ){
-            document.getElementById("21").disabled = true;
         }
     }
     function check(checkSelectDay) {
@@ -154,11 +199,17 @@ style="text-align: left; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Treb
             if ( hours >= 10 && minutes > 30 || hours > 10 ){
                 document.getElementById("10").disabled = true;
             }
+            if ( hours == 11 && minutes > 30 || hours > 11 ){
+                document.getElementById("11").disabled = true;
+            }
             if ( hours >= 12 && minutes > 30 || hours > 12 ){
                 document.getElementById("12").disabled = true;
             }
             if ( hours >= 14 && minutes > 30 || hours > 14 ){
                 document.getElementById("14").disabled = true;
+            }
+            if ( hours == 15 && minutes > 30 || hours > 15 ){
+                document.getElementById("15").disabled = true;
             }
             if ( hours >= 17 && minutes > 30 || hours > 17 ){
                 document.getElementById("17").disabled = true;
@@ -166,20 +217,24 @@ style="text-align: left; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Treb
             if ( hours >= 18 && minutes > 30 || hours > 18 ){
                 document.getElementById("18").disabled = true;
             }
+            if ( hours == 19 && minutes > 30 || hours > 19 ){
+                document.getElementById("19").disabled = true;
+            }
             if ( hours >= 20 && minutes > 30 || hours > 20 ){
                 document.getElementById("20").disabled = true;
             }
-            if ( hours >= 21 && minutes > 30 || hours > 21 ){
-                document.getElementById("21").disabled = true;
-            }
+
         } else if ( today != checkSelectDay ) {
             document.getElementById("10").disabled = false;
+            document.getElementById("11").disabled = false;
             document.getElementById("12").disabled = false;
             document.getElementById("14").disabled = false;
+            document.getElementById("15").disabled = false;
             document.getElementById("17").disabled = false;
             document.getElementById("18").disabled = false;
+            document.getElementById("19").disabled = false;
             document.getElementById("20").disabled = false;
-            document.getElementById("21").disabled = false;
+            
         }
     }
 </script>

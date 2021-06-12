@@ -66,7 +66,7 @@ var express = require('express'),
     // End of Forfeit Admin
     
     router.post('/admin/delete/:id', middleware.checkAdmin, function (req, res) {
-        User.findByIdAndDelete(req.params.id, function(err, result) {
+        User.findByIdAndRemove(req.params.id, function(err, result) {
             if (err) {
                 console.log(err);
             } else {
@@ -110,8 +110,8 @@ router.get('/:id/ticket', middleware.checkProfileOwner, function (req, res) {
     });
 });
 
-router.post('/:id', middleware.checkProfileOwner, upload.fields([{name: 'image' }]), function (req, res){
-    user.findByIdAndUpdate(req.params.id,
+router.post('/:id', middleware.checkProfileOwner, upload.single('image'), function (req, res){
+    User.findByIdAndUpdate(req.params.id,
         {
             picture: '/images/user/' + req.file.filename
         },
@@ -124,5 +124,6 @@ router.post('/:id', middleware.checkProfileOwner, upload.fields([{name: 'image' 
             }
         });
 });
+
 
 module.exports = router;
