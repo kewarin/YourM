@@ -3,7 +3,7 @@
     <!-- Banner -->
     <h3 class="display-5 fw-bold"
         style="text-align: center; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; background-color: #2c2e31; color: rgb(255, 255, 255); padding: 20px;">
-        Edit Movies</h3>
+        Edit Cinemas</h3>
     <form action="/cinemas/<%= Cinemas._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
         <div class="container-fluid" style="height: 100%; width: 100%;">
             <div class="container-fluid mt-5 mb-5" style="width: 80%;">
@@ -35,19 +35,19 @@
 
                 <div style="height: 45px;"></div>
                 <div class="container-fluid" style="height: 100%; position: relative;">
-                    <button class="btn btn-outline-secondary" type="button" data-bs-toggle="modal"
+                    <button class="btn btn-warning" type="button" data-bs-toggle="modal"
                         data-bs-target="#editModal"
-                        style="height: 50px; width: 100px; bottom: 15px; right: 15px; position: absolute;">Submit</button>
+                        style="height: 50px; width: 100px; bottom: 15px; right: 15px; position: absolute;">Edit</button>
                     <div class="modal fade">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" style="color: black;">Edit Movies</h5>
+                                    <h5 class="modal-title" style="color: black;">Edit Cinemas</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body" style="color: black;">
-                                    Edit <%= Movies.name %>
+                                    Edit <%= Cinemas.name %>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
