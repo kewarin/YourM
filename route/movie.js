@@ -35,31 +35,67 @@ Session = require('../models/session'),
 
 
 router.get('/', function (req, res) {
-    movies.find({}, function (err, allMovie) {
+    movies.find({type:'showing'}, function (err, allMovie) {
         if (err) {
             console.log(err);
         } else {
-            res.render('movies/movie.ejs', { Movies: allMovie });
+            movies.find().sort({score: -1}).limit(3).exec(function (err, sortMovies) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    movies.find({type:'coming'}, function(err, comMovie){
+                        if (err) {
+                            console.log(err);
+                        } else {
+                            res.render('movies/movie.ejs',{Movies: allMovie, Sort: sortMovies, Com: comMovie});
+                        }
+                    }); 
+                }
+            });
         }
     });
 });
 
 router.get('/sorting-atoz', function (req, res) {
-    movies.find({}, function (err, allMovie) {
+    movies.find({type:'showing'}, function (err, allMovie) {
         if (err) {
             console.log(err);
         } else {
-            res.render('movies/movie.ejs', { Movies: allMovie });
+            movies.find().sort({score: -1}).limit(3).exec(function (err, sortMovies) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    movies.find({type:'coming'}, function(err, comMovie){
+                        if (err) {
+                            console.log(err);
+                        } else {
+                            res.render('movies/movie.ejs',{Movies: allMovie, Sort: sortMovies, Com: comMovie});
+                        }
+                    }); 
+                }
+            });
         }
     }).sort({ name: 1 });
 });
 
 router.get('/sorting-ztoa', function (req, res) {
-    movies.find({}, function (err, allMovie) {
+    movies.find({type:'showing'}, function (err, allMovie) {
         if (err) {
             console.log(err);
         } else {
-            res.render('movies/movie.ejs', { Movies: allMovie });
+            movies.find().sort({score: -1}).limit(3).exec(function (err, sortMovies) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    movies.find({type:'coming'}, function(err, comMovie){
+                        if (err) {
+                            console.log(err);
+                        } else {
+                            res.render('movies/movie.ejs',{Movies: allMovie, Sort: sortMovies, Com: comMovie});
+                        }
+                    }); 
+                }
+            });
         }
     }).sort({ name: -1 });
 });
@@ -122,11 +158,18 @@ router.put('/:id', upload.fields([{ name: 'image' }]), function (req, res) {
 
 
 router.get('/genre/:genre', function (req, res) {
-    movies.find({ genre: new RegExp(req.params.genre, 'i') }, function (err, foundMovies) {
+    movies.find({ genre: new RegExp(req.params.genre, 'i'), type:"showing" }, function (err, foundMovies) {
         if (err) {
             console.log(err);
         } else {
-            res.render('./movies/movie.ejs', { Movies: foundMovies, sort: req.params.genre });
+            movies.find({type:'coming'}, function(err, comMovie){
+                if (err) {
+                    console.log(err);
+                } else {
+                    res.render('movies/movie.ejs',{Movies: foundMovies, sort: req.params.genre, Com: comMovie});
+                }
+            }); 
+           
         }
     });
 });
@@ -138,11 +181,17 @@ router.post('/search', function (req, res) {
 });
 
 router.get('/search/:name', function (req, res,) {
-    movies.find({ name: new RegExp(req.params.name, 'i') }, function (err, foundMovies) {
+    movies.find({ name: new RegExp(req.params.name, 'i'),type:"showing" }, function (err, foundMovies) {
         if (err) {
             console.log(err);
         } else {
-            res.render('./movies/movie.ejs', { Movies: foundMovies, sort: req.params.name });
+            movies.find({type:'coming'}, function(err, comMovie){
+                if (err) {
+                    console.log(err);
+                } else {
+                    res.render('movies/movie.ejs',{Movies: foundMovies, sort: req.params.genre, Com: comMovie});
+                }
+            }); 
         }
     });
 });

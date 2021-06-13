@@ -4,8 +4,8 @@ const express = require('express'),
     mongoose = require('mongoose'),
     seedDB = require('./seeds'),
     passport = require('passport'),
-    methodOverride  = require('method-override'),
-    flash           = require('connect-flash'),
+    methodOverride = require('method-override'),
+    flash = require('connect-flash'),
     LocalStrategy = require('passport-local'),
     user = require('./models/user');
 
@@ -14,8 +14,8 @@ var indexRoutes = require('./route/index'),
     cinemasRoutes = require('./route/cinema'),
     commentRoutes = require('./route/comment'),
     reserveRoutes = require('./route/reserve');
-    sessionRoutes = require('./route/session');
-    userRoutes = require('./route/user');;
+sessionRoutes = require('./route/session');
+userRoutes = require('./route/user');;
 
 
 mongoose.connect('mongodb://localhost/Yourmove');
@@ -39,10 +39,10 @@ passport.use(new LocalStrategy(user.authenticate()));
 passport.serializeUser(user.serializeUser());
 passport.deserializeUser(user.deserializeUser());
 
-app.use(function(req, res, next){
-    res.locals.currentUser  = req.user;
-    res.locals.error        = req.flash('error');
-    res.locals.success      = req.flash('success');
+app.use(function (req, res, next) {
+    res.locals.currentUser = req.user;
+    res.locals.error = req.flash('error');
+    res.locals.success = req.flash('success');
     next();
 });
 

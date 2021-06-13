@@ -1,9 +1,30 @@
 var express = require('express'),
     router = express.Router(),
+    multer = require('multer'),
+    path = require('path'),
     middleware = require('../middleware'),
     cinemas = require('../models/cinema');
-movies = require('../models/movie');
-user = require('../models/user');
+    movies = require('../models/movie');
+    user = require('../models/user'),
+    storage = multer.diskStorage({
+    destination: function (req, file, callback) {
+        callback(null, './public/images/cinema/uploads');
+    },
+    filename: function (req, file, callback) {
+        callback(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+    },
+}),
+imageFilter = function (req, file, callback) {
+    if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/i)) {
+        return callback(new Error('Only JPG, jpeg, PNG and GIF image files are allowed!'), false);
+    }
+    callback(null, true);
+},
+upload = multer({
+    storage: storage,
+    fileFilter: imageFilter,
+}),
+
 
 router.get('/', function (req, res) {
     cinemas.find({}, function (err, allCinemas) {
@@ -42,12 +63,13 @@ router.get('/new', middleware.checkAdmin, function (req, res) {
 
 router.post('/new', upload.fields([{ name: 'image' }]), function (req, res) {
     req.body.cinema.image = '/images/cinema/uploads/' + req.files['image'][0].filename;
-    Cinemas.create(req.body.cinema, function (err, newCinemas) {
+    cinemas.create(req.body.cinemas, function (err, newCinemas) {
         if (err) {
             console.log(err);
         } else {
             res.redirect('/cinemas');
         }
+
     });
 });
 //  End of New
@@ -80,7 +102,7 @@ router.put('/:id', upload.fields([{ name: 'image' }]), function (req, res) {
 
 //  Delete
 router.delete('/:id', function (req, res) {
-    Cinemas.findByIdAndRemove(req.params.id, function (err) {
+    cinemas.findByIdAndRemove(req.params.id, function (err) {
         if (err) {
             console.log(err);
         } else {
@@ -97,7 +119,7 @@ router.get('/:id', function (req, res) {
         if (err) {
             console.log(err);
         } else {
-            movies.find({}, function (err, allMovies) {
+            movies.find({type: 'showing'}, function (err, allMovies) {
                 if (err) {
                     console.log(err);
                 } else {

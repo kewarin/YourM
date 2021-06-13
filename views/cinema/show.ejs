@@ -41,28 +41,31 @@
   <!-- End of Banner -->
 
   <!-- Poster -->
+  
   <div class="album py-5">
     <div class="container-fluid" style="padding-top: 2px;">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+       
         <% Movies.forEach(function(movie){ %>
           <div class="col">
-
             <div class="card shadow-sm">
               <a href="/session/<%= Cinemas._id %>/<%= movie._id %>">
                 <img src="<%= movie.image %>" class="card-img-top" height="550px" width="50px">
-            </div>
+            
             <div class="card-body">
               <h5 class="card-title" style="text-align: center;">
                 <%= movie.name %>
               </h5>
             </div>
+          </div>
             </a>
           </div>
           <% }); %>
+         
       </div>
     </div>
   </div>
-
+ 
   <!-- End of Poster -->
   <!-- End of Now showing -->
 

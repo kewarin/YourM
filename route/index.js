@@ -5,7 +5,7 @@ const express       = require('express'),
       passport  =  require('passport');
 
 router.get('/', function(req, res){
-    movies.find({}, function(err, allMovie){
+    movies.find({type:'showing'}, function(err, allMovie){
         if (err) {
             console.log(err);
         } else {
@@ -13,7 +13,13 @@ router.get('/', function(req, res){
                 if (err) {
                     console.log(err);
                 } else {
-                    res.render('home.ejs',{Movies: allMovie, Sort: sortMovies});
+                    movies.find({type:'coming'}, function(err, comMovie){
+                        if (err) {
+                            console.log(err);
+                        } else {
+                            res.render('home.ejs',{Movies: allMovie, Sort: sortMovies, Com: comMovie});
+                        }
+                    }); 
                 }
             });
         }

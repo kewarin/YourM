@@ -12,6 +12,7 @@ var data = [
         trailer: 'https://www.youtube.com/embed/TcMBFSGVi1c',
         genre: 'Action/Sci-fi/Fantasy',
         runtime: '3h 2m',
+        type:'showing',
         score: 8.4
     },
     {
@@ -21,6 +22,7 @@ var data = [
         trailer: 'https://www.youtube.com/embed/kVrqfYjkTdQ',
         genre: 'Drama',
         runtime: '3h 30m',
+        type:'showing',
         score: 7.8
     },
     {
@@ -30,6 +32,7 @@ var data = [
         trailer: 'https://www.youtube.com/embed/foyufD52aog',
         genre: 'Fantasy',
         runtime: '2h 8m',
+        type:'showing',
         score: 6.9
     },
     {
@@ -39,6 +42,7 @@ var data = [
         trailer: 'https://www.youtube.com/embed/xjDjIWPwcPU',
         genre: 'Action/Sci-fi/Fantasy',
         runtime: '2h 15m',
+        type:'showing',
         score: 7.3
     },
     {
@@ -48,6 +52,7 @@ var data = [
         trailer: 'https://www.youtube.com/embed/5P8R2zAhEwg',
         genre: 'Drama',
         runtime: '1h 40m',
+        type:'showing',
         score: 6.8
     },
     {
@@ -57,6 +62,7 @@ var data = [
         trailer: 'https://www.youtube.com/embed/sIMChzE_aCo',
         genre: 'Action/Thriller/Drama',
         runtime: '2h 1m',
+        type:'showing',
         score: 7.1
     },
     {
@@ -66,6 +72,7 @@ var data = [
         trailer: 'https://www.youtube.com/embed/UcmZN0Mbl04',
         genre: 'Thriller',
         runtime: '1h 35m',
+        type:'showing',
         score: 6.9
     },
     {
@@ -75,6 +82,7 @@ var data = [
         trailer: 'https://www.youtube.com/embed/YoHD9XEInc0',
         genre: 'Action/Sci-fi/Thriller/Drama',
         runtime: '2h 42m',
+        type:'showing',
         score: 8.6
     },
     {
@@ -84,9 +92,39 @@ var data = [
         trailer: 'https://www.youtube.com/embed/e3Nl_TCQXuw',
         genre: 'Fantasy',
         runtime: '2h 19m',
+        type:'showing',
         score: 7.1
+    },
+    {
+        name: 'Venom',
+        image: 'https://www.joblo.com/newsimages1/venom-poster-6-913.jpg',
+        desc: 'While trying to take down Carlton, the CEO of Life Foundation, Eddie, a journalist, investigates experiments of human trials. Unwittingly, he gets merged with a symbiotic alien with lethal abilities.',
+        trailer: 'https://www.youtube.com/embed/u9Mv98Gr5pY',
+        genre: 'Action/Sci-fi',
+        runtime: '2h 20m',
+        type:'coming',
+        score: 0
+    },
+    {
+        name: 'The shape of water',
+        image: 'https://cdn.shopify.com/s/files/1/0969/9128/products/The_Shape_Of_Water_-_Tallenge_Hollywood_Movie_Poster_Collection_28c21638-1466-4ae7-bde1-42d1cf2812cb.jpg?v=1570086168',
+        desc: 'Elisa, a lonely janitor, stumbles upon an amphibious creature that is held captive in a secret research facility. She then develops a unique relationship with the creature.',
+        trailer: 'https://www.youtube.com/embed/XFYWazblaUA',
+        genre: 'Fantasy',
+        runtime: '2h 3m',
+        type:'coming',
+        score: 0
+    },
+    {
+        name: 'Archenemy',
+        image: 'https://www.joblo.com/assets/images/joblo/news/2020/10/archenemyposter.jpg',
+        desc: 'While trying to take down Carlton, the CEO of Life Foundation, Eddie, a journalist, investigates experiments of human trials. Unwittingly, he gets merged with a symbiotic alien with lethal abilities.',
+        trailer: 'https://www.youtube.com/embed/7EO2IhDOSkE',
+        genre: 'Action',
+        runtime: '1h 30m',
+        type:'coming',
+        score: 0
     }
-
 ];
 
 var cData = [
@@ -111,37 +149,23 @@ var cData = [
         seat: [[0, 0, 0, 0], [0, 0, 0, 0]],
         time: [, 13, 15, 18, 21],
     },
-];
-
-var ComData = [
     {
-        name: 'Venom',
-        image: 'https://www.joblo.com/newsimages1/venom-poster-6-913.jpg',
-        desc: 'While trying to take down Carlton, the CEO of Life Foundation, Eddie, a journalist, investigates experiments of human trials. Unwittingly, he gets merged with a symbiotic alien with lethal abilities.',
-        trailer: 'https://www.youtube.com/embed/u9Mv98Gr5pY',
-        genre: 'Action/Sci-fi',
-        runtime: '2h 20m',
-        score: 0
+        name: "Cineplex Rama IV",
+        image: "https://9968c6ef49dc043599a5-e151928c3d69a5a4a2d07a8bf3efa90a.ssl.cf2.rackcdn.com/649514-1.jpg",
+        address: "991 Siam Paragon Khwaeng Pathum Wan, Khet Pathum Wan, Krung Thep Maha Nakhon 10330",
+        seat: [[0, 0, 0, 0], [0, 0, 0, 0]],
+        time: [, 13, 15, 18, 21],
     },
     {
-        name: 'The shape of water',
-        image: 'https://cdn.shopify.com/s/files/1/0969/9128/products/The_Shape_Of_Water_-_Tallenge_Hollywood_Movie_Poster_Collection_28c21638-1466-4ae7-bde1-42d1cf2812cb.jpg?v=1570086168',
-        desc: 'Elisa, a lonely janitor, stumbles upon an amphibious creature that is held captive in a secret research facility. She then develops a unique relationship with the creature.',
-        trailer: 'https://www.youtube.com/embed/XFYWazblaUA',
-        genre: 'Fantasy',
-        runtime: '2h 3m',
-        score: 0
-    },
-    {
-        name: 'Archenemy',
-        image: 'https://www.joblo.com/assets/images/joblo/news/2020/10/archenemyposter.jpg',
-        desc: 'While trying to take down Carlton, the CEO of Life Foundation, Eddie, a journalist, investigates experiments of human trials. Unwittingly, he gets merged with a symbiotic alien with lethal abilities.',
-        trailer: 'https://www.youtube.com/embed/7EO2IhDOSkE',
-        genre: 'Action',
-        runtime: '1h 30m',
-        score: 0
+        name: "Cineplex Rama III",
+        image: "https://9968c6ef49dc043599a5-e151928c3d69a5a4a2d07a8bf3efa90a.ssl.cf2.rackcdn.com/649514-1.jpg",
+        address: "991 Siam Paragon Khwaeng Pathum Wan, Khet Pathum Wan, Krung Thep Maha Nakhon 10330",
+        seat: [[0, 0, 0, 0], [0, 0, 0, 0]],
+        time: [, 13, 15, 18, 21],
     }
 ];
+
+
 
 
 function seedDB() {
