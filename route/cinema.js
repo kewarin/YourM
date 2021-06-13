@@ -63,7 +63,7 @@ router.get('/new', middleware.checkAdmin, function (req, res) {
 
 router.post('/new', upload.fields([{ name: 'image' }]), function (req, res) {
     req.body.cinema.image = '/images/cinema/uploads/' + req.files['image'][0].filename;
-    cinemas.create(req.body.cinemas, function (err, newCinemas) {
+    Cinemas.create(req.body.cinema, function (err, newCinemas) {
         if (err) {
             console.log(err);
         } else {
