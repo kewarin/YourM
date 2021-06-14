@@ -1,4 +1,4 @@
-const reserve = require('../models/reserve');
+
 
 var express = require('express'),
     router = express.Router({ mergeParams: true }),
@@ -36,69 +36,69 @@ router.post('/:id', middleware.isLoggedIn, function (req, res) {
         if (err) {
             console.log(err);
         } else {
-            Reserve.create(req.body.reserve, function (err, reserve) {
+            Reserve.create(req.body.reserve, function (err, rese) {
                 if (err) {
                     console.log(err);
                 } else {
-                    reserve.user.id = req.user._id;
-                    reserve.user.username = req.user.username;
-                    reserve.save();
-                    foundSession.reservation.push(reserve);
+                    rese.user.id = req.user._id;
+                    rese.user.username = req.user.username;
+                    rese.save();
+                    foundSession.reservation.push(reser);
                     foundSession.save();
 
                     if (req.body.A1 == 'y') {
-                        reserveSeat('A1', reserve._id);
+                        reserveSeat('A1', reser._id);
                     }
                     if (req.body.A2 == 'y') {
-                        reserveSeat('A2', reserve._id);
+                        reserveSeat('A2', reser._id);
                     }
                     if (req.body.A3 == 'y') {
-                        reserveSeat('A3', reserve._id);
+                        reserveSeat('A3', reser._id);
                     }
                     if (req.body.A4 == 'y') {
-                        reserveSeat('A4', reserve._id);
-                    }
+                        reserveSeat('A4', reser._id);
+                    }ve
                     if (req.body.A5 == 'y') {
-                        reserveSeat('A5', reserve._id);
+                        reserveSeat('A5', reser._id);
                     }
                     if (req.body.A6 == 'y') {
-                        reserveSeat('A6', reserve._id);
+                        reserveSeat('A6', reser._id);
                     }
                     if (req.body.B1 == 'y') {
-                        reserveSeat('B1', reserve._id);
+                        reserveSeat('B1', reser._id);
                     }
                     if (req.body.B2 == 'y') {
-                        reserveSeat('B2', reserve._id);
+                        reserveSeat('B2', reser._id);
                     }
                     if (req.body.B3 == 'y') {
-                        reserveSeat('B3', reserve._id);
+                        reserveSeat('B3', reser._id);
                     }
                     if (req.body.B4 == 'y') {
-                        reserveSeat('B4', reserve._id);
+                        reserveSeat('B4', reser._id);
                     }
                     if (req.body.B5 == 'y') {
-                        reserveSeat('B5', reserve._id);
+                        reserveSeat('B5', reser._id);
                     }
                     if (req.body.B6 == 'y') {
-                        reserveSeat('B6', reserve._id);
+                        reserveSeat('B6', reser._id);
                     }
                     if (req.body.C1 == 'y') {
-                        reserveSeat('C1', reserve._id);
+                        reserveSeat('C1', reser._id);
                     }
                     if (req.body.C2 == 'y') {
-                        reserveSeat('C2', reserve._id);
+                        reserveSeat('C2', reser._id);
                     }
                     if (req.body.C3 == 'y') {
-                        reserveSeat('C3', reserve._id);
+                        reserveSeat('C3', reser._id);
                     }
                     if (req.body.C4 == 'y') {
-                        reserveSeat('C4', reserve._id);
+                        reserveSeat('C4', reser._id);
                     }
                     if (req.body.C5 == 'y') {
-                        reserveSeat('C5', reserve._id);
+                        reserveSeat('C5', reser._id);
                     }
                     if (req.body.C6 == 'y') {
-                        reserveSeat('C6', reserve._id);
+                        reserveSeat('C6', reser._id);
                     }
 
                     res.redirect('/user/' + req.user._id + '/ticket');
@@ -117,7 +117,7 @@ router.post('/:id', middleware.isLoggedIn, function (req, res) {
                     if (err) {
                         console.log(err);
                     } else {
-                        console.log('Reserve Seat : ' + seat);
+                        console.log('Seat : ' + seat);
                     }
                 });
             }
