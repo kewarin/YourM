@@ -39,31 +39,6 @@ router.get('/admin', middleware.checkAdmin, function (req, res) {
     });
 });
 
-//  Grant Admin
-router.post('/admin/grant/:id', middleware.checkAdmin, function (req, res) {
-    User.findByIdAndUpdate(req.params.id, { priority: 'admin' }, function (err, result) {
-        if (err) {
-            console.log(err);
-        } else {
-            console.log("Updated User : ", result);
-            res.redirect('back');
-        }
-    });
-});
-// End of Grant Admin
-
-// Forfeit Admin
-router.post('/admin/forfeit/:id', middleware.checkAdmin, function (req, res) {
-    User.findByIdAndUpdate(req.params.id, { priority: 'user' }, function (err, result) {
-        if (err) {
-            console.log(err);
-        } else {
-            console.log("Updated User : ", result);
-            res.redirect('back');
-        }
-    });
-});
-// End of Forfeit Admin
 
 router.post('/admin/delete/:id', middleware.checkAdmin, function (req, res) {
     User.findByIdAndRemove(req.params.id, function (err, result) {

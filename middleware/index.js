@@ -1,7 +1,4 @@
 
-var movies = require('../models/movie'),
-    comment    = require('../models/comment'),
-    user = require('../models/user');
 
 var middlewareObj = {};
 

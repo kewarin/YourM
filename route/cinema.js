@@ -56,7 +56,7 @@ router.get('/sorting-ztoa', function (req, res) {
     }).sort({ name: -1 });
 });
 
-//  New
+
 router.get('/new', middleware.checkAdmin, function (req, res) {
     res.render('./cinema/new.ejs');
 });
@@ -72,9 +72,9 @@ router.post('/new', upload.fields([{ name: 'image' }]), function (req, res) {
 
     });
 });
-//  End of New
 
-//  Edit
+
+
 router.get('/:id/edit', middleware.checkAdmin, function (req, res) {
     Cinemas.findById(req.params.id, function (err, foundCinemas) {
         if (err) {
@@ -98,9 +98,9 @@ router.put('/:id', upload.fields([{ name: 'image' }]), function (req, res) {
         }
     });
 });
-//  End of Edit
 
-//  Delete
+
+
 router.delete('/:id', function (req, res) {
     cinemas.findByIdAndRemove(req.params.id, function (err) {
         if (err) {
@@ -110,10 +110,9 @@ router.delete('/:id', function (req, res) {
         }
     })
 });
-//  End of delete
 
 
-//  Show
+
 router.get('/:id', function (req, res) {
     cinemas.findById(req.params.id).exec(function (err, foundCinemas) {
         if (err) {
