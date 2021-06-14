@@ -1,0 +1,16 @@
+<%- include('../partials/header.ejs') %>
+<div class='container'>
+<form action="/movie/<% movies._id %>/comment" method="POST">
+    <div class="mb-3">
+      <label class="form-label">Author</label>
+      <input type="text" class="form-control" name='comment[author]' placeholder='Your username'>
+    </div>
+    <div class="mb-3">
+      <label  class="form-label">Comment</label>
+      <input type="text" class="form-control" name='comment[text]' placeholder='Comment'>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+<%- include('../partials/footer.ejs') %>

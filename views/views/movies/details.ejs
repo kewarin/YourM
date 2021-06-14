@@ -1,0 +1,185 @@
+<%- include('../partials/header.ejs') %>
+
+  <div class='container'>
+    <center>
+      <div class="card mb-3" style="max-width: 2000px; max-height: 1000px; padding: 30px;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="<%= Movies.image %>" width="350px" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body" style="text-align:left">
+              <h5 class="card-title">
+                <%= Movies.name %><span> &nbsp;:&nbsp; <%= Movies.runtime %></span><span>&nbsp;| <svg xmlns="http://www.w3.org/2000/svg" style="padding-bottom: 4px;" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                  <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+                </svg>Rating : <%= Movies.score %> </span>
+              </h5>
+              <p class="card-text">
+                <%= Movies.desc %>
+              </p>
+              <iframe width="700" height="400" src="<%= Movies.trailer %>" title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </center>
+
+    <% if(!currentUser) { %>
+
+      <% } else { %>
+        <div class="container-fluid mt-3" style="height: 50px;">
+          <% var lid; %>
+            <% currentUser.likes.forEach(function(liked){ if ( liked.movies.id==Movies.id ) { match=1; lid=liked._id; }
+              }); %>
+              <% if( lid !=null ) { %>
+                <form action="/movie/<%= lid %>/unlike" method="POST">
+                  <center><button type="submit" class="btn btn-primary"
+                      style=" background-color: #0042c5; border-color: #648fcf;"><svg xmlns="http://www.w3.org/2000/svg"
+                        width="16" height="16" fill="currentColor" class="bi bi-bookmark-heart" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                          d="M8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z" />
+                        <path
+                          d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z" />
+                      </svg> &nbsp; Remove from favourite</button></center>
+                </form>
+                <% } else { %>
+                  <form action="/movie/<%= Movies._id %>/like" method="POST">
+                    <center><button type="submit" class="btn btn-primary"
+                        style=" background-color: #f10079; border-color: #e767ad;"><svg
+                          xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                          class="bi bi-bookmark-heart-fill" viewBox="0 0 16 16">
+                          <path
+                            d="M2 15.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v13.5zM8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z" />
+                        </svg> &nbsp; Add to favourite</button></center>
+                  </form>
+                  <% } %>
+        </div>
+        <% } %>
+       
+        <% if(Movies.type == "showing"){ %>
+
+          <h3 class="display-5 fw-bold"
+            style="text-align: left; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; background-color: #2c2e31; color: rgb(255, 255, 255); padding: 20px; font-size: 35px;">
+            Cinemas</h3>
+
+          <div class="container-fluid">
+            <div class="col">
+              <div style="padding: 10px;" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <% Cinemas.forEach(function(cinema){ %>
+                  <div class="col">
+                    <div class="card shadow-sm">
+                      <a href="/session/<%= cinema._id %>/<%= Movies._id %>">
+                        <img src="<%=cinema.image %>" class="card-img-top" width="500px" height="300px"
+                          style="object-fit: cover;">
+                        <div class="card-body" style="color: #2c2e31; text-decoration: none;">
+                          <h6 class="card-title" style="text-align: center;">
+                            <%= cinema.name %>
+                          </h6>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                  <% }); %>
+              </div>
+            </div>
+          </div>
+<% }  %> 
+ 
+          <hr>
+
+          <form action="/movie/<%= Movies._id %>/comment " method="POST">
+            <div class="form-floating">
+              <input class="form-control" name='comment[text]' required="required" placeholder='Comment'
+                style="height: 100px"></input>
+              <label>Comments</label>
+            </div><br />
+            &emsp;
+            <button type="submit" class="btn btn-primary" value="comment"
+              style="background-color: #45484e;">Submit</button>
+          </form>
+          <hr>
+          <div class="container">
+            <% Movies.comment.forEach(comment=> { %>
+              <div class="card card-cover rounded-5 shadow-lg p-2" style=" padding-top: 10px; height: 120px;">
+                <p>
+                  <strong style="color: black;">&nbsp;<%= comment.author.username %></strong>
+                </p>
+                <% var i=0; %>
+                  <% if(!currentUser) {%>
+                    <% } else if ( currentUser.priority=='admin' ) { %>
+                      <div class="container-fluid">
+                        <form action="/movie/<%= Movies._id %>/comment/<%= comment._id %>/?_method=DELETE"
+                          method="POST">
+                          <button type="submit" class="btn btn-danger"
+                            style="bottom: 45px; right: 10px; position: absolute; padding-top: 8px;">Delete</button>
+                          <div class="modal fade" id="deleteModal<%= i %>" tabindex="-1">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" style="color: black;">Delete Comment</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body" style="color: black;">
+                                  Delete <%= comment.text %>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Cancel</button>
+                                  <button type="submit" class="btn btn-danger">Delete</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                        </form>
+                      </div>
+                      <% } %>
+                        &emsp; <%= comment.text %>
+                          <p class="pt-3 mb-3 text-end">
+                            <%= comment.date %>
+                          </p>
+              </div>
+
+              <% }); %>
+          </div>
+          <br />
+  </div>
+  <% var i=0; %>
+    <% if(!currentUser) {%>
+      <% } else if ( currentUser.priority=='admin' ) { %>
+        <center>
+
+          <a class="btn-group" href="/movie/<%= Movies._id %>/edit">
+            <button class="btn "
+              style="height: 45px; width: 65px;  background-color: #2c2e31; color: white; ">Edit</button>
+          </a>
+          <form class="btn-group" action="/movie/<%= Movies._id %>?_method=DELETE" method="POST">
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#deleteModal<%= i %>"
+              style=" background-color: #2c2e31; color: white; height: 45px; width: 80px;">
+              Delete
+            </button>
+            <div class="modal fade" id="deleteModal<%= i %>" tabindex="-1">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" style="color: black;">Delete Movies</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body" style="color: black;">
+                    Delete <%= Movies.name %>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+
+          <% } %>
+        </center>
+        <%- include('../partials/footer.ejs') %>

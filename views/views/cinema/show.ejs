@@ -1,0 +1,100 @@
+<%- include('../partials/header.ejs') %>
+
+  <div class="container-fluid" style="background-color: #383a3f;">
+    <div class="row">
+      <div class="col">
+        <img src="<%= Cinemas.image %>" width="850" height="450">
+      </div>
+      <div class="col pt-5 text-center">
+        <ul style="list-style-type: none; color: white;">
+          <div class="container-fluid">
+            <h4>
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <%= Cinemas.name %>
+            </h4>
+          </div>
+          <div class="container-fluid">
+            <h5>
+              <%= Cinemas.address %>
+            </h5>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid " style="height: 75px; background-color: #2c2e31; padding-top: 25px;">
+    <h5 style="color: white; text-transform: uppercase; ">
+      &emsp;
+      <span class="dot" style="background-color: #2c2e31; padding-left: 20px;"></span>
+      Now showing
+    </h5>
+  </div>
+  
+  <div class="album py-5">
+    <div class="container-fluid" style="padding-top: 2px;">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+       
+        <% Movies.forEach(function(movie){ %>
+          <div class="col">
+            <div class="card shadow-sm">
+              <a href="/session/<%= Cinemas._id %>/<%= movie._id %>">
+                <img src="<%= movie.image %>" class="card-img-top" height="550px" width="50px">
+            
+            <div class="card-body">
+              <h5 class="card-title" style="text-align: center;">
+                <%= movie.name %>
+              </h5>
+            </div>
+          </div>
+            </a>
+          </div>
+          <% }); %>
+         
+      </div>
+    </div>
+  </div>
+ 
+
+  <% var i=0; %>
+    <% if(!currentUser) {%>
+      <% } else if ( currentUser.priority=='admin' ) { %>
+        <center>
+
+          <a class="btn-group" href="/cinemas/<%= Cinemas._id %>/edit">
+            <button class="btn "
+              style="height: 45px; width: 65px;  background-color: #2c2e31; color: white; ">Edit</button>
+          </a>
+          <form class="btn-group" action="/cinemas/<%= Cinemas._id %>?_method=DELETE" method="POST">
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#deleteModal<%= i %>"
+              style=" background-color: #2c2e31; color: white; height: 45px; width: 80px;">
+              Delete
+            </button>
+            <div class="modal fade" id="deleteModal<%= i %>" tabindex="-1">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Delete Cinemas</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    Delete <%= Cinemas.name %>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </form>
+
+          <% } %>
+        </center>
+
+        <%- include('../partials/footer.ejs') %>
